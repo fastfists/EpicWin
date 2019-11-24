@@ -6,6 +6,7 @@ __pycache__/
 # editor
 .vscode
 .DS_Store
+r.sh
 
 # C extensions
 *.so
