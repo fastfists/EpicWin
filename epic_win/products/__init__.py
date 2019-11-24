@@ -1,5 +1,5 @@
-from .views import product
+from .views import views
 
 def init_app(app):
-    app.register_blueprint(product)
+    app.register_blueprint(views)
 

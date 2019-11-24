@@ -7,9 +7,6 @@ class Products(db.Model):
     cost = db.Column(db.String(20), nullable=False)
     image_name = db.Column(db.String(25), nullable=False)
 
-class Orders(db.Model):
-    pass
-
 
 """
     https://app.quickdatabasediagrams.com/#/d/Kv2fMX
