@@ -12,7 +12,7 @@ def login():
     if request.method == "POST":
         schema = UserSchema()
         schmea.load(request.form)
-        user = user.query.get(schema.get('name'))
+        user = user.query.get(schema.get('username'))
         if user and bcrypt.check_password_hash(user.password, schema.password):
             next_page = request.args.get('next')
             flash("You are now logged in", "success")
@@ -29,5 +29,7 @@ def logout():
 @user.route('/account')
 @login_required
 def account():
-    return render_template('user/account.html', user=current_user)    
+    return render_template('user/account.html', user=current_user)
+
+
 
