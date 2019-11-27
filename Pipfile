@@ -18,7 +18,7 @@ flask-login = "*"
 python-dotenv = "*"
 marshmallow-sqlalchemy = "*"
 gunicorn = "*"
-flask-sekazi = "*"
+flask-sekazi = "==0.0.3"
 psycopg2 = "*"
 flask-bcrypt = "*"
 
