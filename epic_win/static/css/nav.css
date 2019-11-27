@@ -1,21 +1,23 @@
 .nav {
     display: flex;
     justify-content: space-between;
-    height: 5vh;
+    height: 7vh;
     background: #708FB3;
     padding-left: 20px;
     padding-right: 50px;
+    align-items: center;
 }
 
 .logo-section {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 5px 0;
 }
 
 .logo-section a {
     display: inline-block;
-    padding: 5% 0px;
+    top: 10px;
     position: relative;
     text-decoration: none;
     color: black;
@@ -28,7 +30,6 @@
 .nav-items a {
     text-decoration: none;
     color: black;
-    padding: 5% 0px;
     display: inline-block;
     margin-left: 27px;
 }
