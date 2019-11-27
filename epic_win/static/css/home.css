@@ -1,0 +1,40 @@
+.hero {
+    padding-top: 100px;
+    box-shadow: 0px 50px 70px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-between;
+    height: 70vh;
+    background: #D9DFE5;
+}
+
+.hero:after {
+    clip-path: polygon(0 0, 100% 0, 100% 71%, 0% 100%);
+}
+
+.aside {
+    width: 50%;
+    margin-left: 138px;
+}
+
+.illustration {
+    margin-left: 155px;
+    width: 100%;
+}
+
+.category {
+    background: linear-gradient(178.74deg, #28476B 1.37%, rgba(40, 71, 107, 0.379528) 55.83%, rgba(40, 71, 107, 0.292661) 71.42%, rgba(40, 71, 107, 0.203125) 80.93%, rgba(40, 71, 107, 0) 100.11%);
+    mix-blend-mode: normal;
+    height: 1338px;
+}
+
+.category .items {
+    margin-bottom: 40px;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    padding-top: 100px;
+}
+
