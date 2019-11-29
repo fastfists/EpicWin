@@ -11,6 +11,8 @@ def create_app(config_object='epic_win.settings') -> Flask:
     user.init_app(app)
     public.init_app(app)
 
+    register_extensions(app)
+
     return app
 
 def register_extensions(app):
