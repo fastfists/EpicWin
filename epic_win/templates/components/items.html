@@ -1,9 +1,7 @@
 {% addtoblock "css" %}
-    <link rel="stylesheet" href="/static/css/items.css">
-{% endaddtoblock %}
-
-{% addtoblock "css" %}
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link rel="stylesheet" href="/static/css/items.css">
 {% endaddtoblock %}
 
 {% macro render_item(item) %}
@@ -28,30 +26,35 @@
 {% macro render_items(items) %}
     <div class="items">
         {% for item in items %}
-            {{ render_item(item) }}
+        {{ render_item(item) }}
         {% endfor %}
     </div>
 {% endmacro %}
-
-
-
-
-{% addtoblock "js" %}
-<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-{% endaddtoblock %}
 
 {% addtoblock "js" %}
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 {% endaddtoblock %}
 
 {% addtoblock "js" %}
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1/slick/slick.min.js"></script>
 {% endaddtoblock %}
 
 {% addtoblock "js" %}
 <script>
-$(".items").slick();
+    $('.items').slick({
+        centerMode: true,
+        arrows: true,
+        slidesToShow: 3,
+        dots: true,
+        infinite: true,
+        variableWidth: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+    });
 </script>
-{% endaddtoblock  %}
-
+{% endaddtoblock %}
 
