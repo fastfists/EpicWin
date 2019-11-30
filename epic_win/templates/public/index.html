@@ -6,7 +6,9 @@
 {% endaddtoblock %}
 
 {% block body %}
-    <div class="hero">
+    <div class="hero-bg">
+    </div>
+    <section class="hero">
         <div class="container aside">
             <h1>Epic Rewards</h1>
             <p class="subheading-1">
@@ -75,14 +77,14 @@
             </defs>
             </svg>
         </div>
-    </div>
+    </section>
 
 
-    <div class="category">
+    <section class="category">
         <div class="container heading">
             <h2>Shoes:</h2>
             <p class="subheading-2">50% Discount</p>
         </div>
         {{ render_items(items) }}
-    </div>
+    </section>
 {% endblock body %}

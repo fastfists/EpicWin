@@ -8,7 +8,7 @@ def index():
             "price": 60,
             "image_url": "/static/images/item.png"
             }
-    return render_template("public/index.html", items=[item for i in range(5)])
+    return render_template("public/index.html", items=[item for i in range(10)])
 
 @public.route('/about')
 def about():

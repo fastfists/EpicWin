@@ -110,8 +110,15 @@ a {
     flex: 1;
 }
 
+.logo {
+    height: 6vh;
+}
+
+/* Colors */
+
 .dark-blue {
     color: white;
     background: #224680;
 }
+
 
