@@ -1,6 +1,6 @@
 .item {
-    width: 500px;
-    height: 372px;
+    width: 376px;
+    height: 350px;
     padding: 25px 25px;
     box-shadow: 6px 5px 4px rgba(0, 0, 0, 0.27);
     border-radius: 70px;
@@ -30,9 +30,8 @@
 
 
 .item .buttons{
-    justify-content: space-between;
-    width: 100%;
-    align-self: flex-end;
+    position: relative;
+    top: 15%;
 }
 
 .items .item {

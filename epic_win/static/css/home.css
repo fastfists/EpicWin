@@ -1,5 +1,5 @@
 .hero {
-    padding-top: 6vh;
+    padding-top: 10vh;
     display: flex;
     justify-content: space-between;
     height: 70vh;
@@ -27,25 +27,41 @@
 }
 
 .category {
-    background: linear-gradient(180.12deg, #28476B 7.43%, rgba(40, 71, 107, 0.713719) 12.63%, rgba(40, 71, 107, 0.379528) 18.71%, rgba(40, 71, 107, 0.292661) 45.53%, rgba(40, 71, 107, 0.203125) 68.24%, rgba(40, 71, 107, 0) 99.09%);
-
+    background: linear-gradient(178.94deg, #28476B 1.37%, rgba(40, 71, 107, 0.379528) 55.83%, rgba(40, 71, 107, 0.292661) 71.42%, rgba(40, 71, 107, 0.203125) 80.93%, rgba(40, 71, 107, 0) 100.11%);
+mix-blend-mode: normal;
     mix-blend-mode: normal;
-    height: 1338px;
     position: relative;
     top: -20vh;
     z-index: 0;
     padding-top: 20vh;
 }
 
+.heading {
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.heading h2 {
+    margin-right: 42px;
+}
 
 .category .items {
     margin-bottom: 40px;
 }
 
-.heading {
-    display: flex;
-    align-items: center;
-    align-content: center;
-    padding-top: 100px;
+
+.category .shop-more {
+    position: relative;
+    left: 80%;
+    top: 70px;
+}
+
+.call-to-action {
+    padding: 45px 0px;
+    color: white;
+    background: #181F26;
+    width: 100%;
+    text-align: center;
 }
 
