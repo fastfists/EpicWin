@@ -4,12 +4,16 @@ from flask import Flask
 def create_app(config_object='epic_win.settings') -> Flask:
     from . import user
     from . import public
+    from . import products
 
     app = Flask(__name__)
     app.config.from_object(config_object)
+    register_extensions(app)
 
     user.init_app(app)
     public.init_app(app)
+    products.init_app(app)
+
 
     return app
 
