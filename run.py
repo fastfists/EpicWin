@@ -1,3 +1,5 @@
-import autoapp
+from epic_win.app import create_app
 
-autoapp.app.run()
+app = create_app()
+
+app.run(debug=True)

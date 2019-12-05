@@ -1,4 +1,4 @@
-from .models import User
+from .models import Users
 from .admin import init_admin
 from .views import user
 

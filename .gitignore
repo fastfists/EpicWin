@@ -5,6 +5,7 @@ __pycache__/
 
 # editor
 .vscode
+.vim
 .DS_Store
 .vim
 r.sh
