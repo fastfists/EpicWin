@@ -28,7 +28,6 @@
 
 .category {
     background: linear-gradient(178.94deg, #28476B 1.37%, rgba(40, 71, 107, 0.379528) 55.83%, rgba(40, 71, 107, 0.292661) 71.42%, rgba(40, 71, 107, 0.203125) 80.93%, rgba(40, 71, 107, 0) 100.11%);
-mix-blend-mode: normal;
     mix-blend-mode: normal;
     position: relative;
     top: -20vh;
@@ -58,6 +57,7 @@ mix-blend-mode: normal;
 }
 
 .call-to-action {
+    margin: 10vh 0px;
     padding: 45px 0px;
     color: white;
     background: #181F26;
