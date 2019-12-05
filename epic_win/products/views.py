@@ -4,4 +4,4 @@ views = Blueprint('products', __name__)
 
 @views.route('/products')
 def products():
-    pass
+    return render_template('products/single_item.html')
