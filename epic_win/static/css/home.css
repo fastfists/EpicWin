@@ -1,7 +1,9 @@
+/* Extra Large */
+
 .hero {
     padding-top: 10vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 70vh;
     background: rgba(0,0,0,0);
     position: relative;
@@ -20,6 +22,7 @@
 
 .aside {
     width: 50%;
+    margin-right: 300px;
 }
 
 .illustration {
@@ -39,6 +42,7 @@
     display: flex;
     align-items: center;
     padding-top: 100px;
+    align-items: space-around;
 }
 
 .heading h2 {
@@ -52,7 +56,7 @@
 
 .category .shop-more {
     position: relative;
-    left: 80%;
+    float: right;
     top: 70px;
 }
 
@@ -65,3 +69,27 @@
     text-align: center;
 }
 
+/* Desktop Size */
+@media (max-width: 1025px) {
+    .illustration {
+        width: 70%;
+    }
+    .aside {
+        margin-right: 0px;
+    }
+}
+
+/* Tablet Size */
+@media (max-width: 768px) {
+    .illustration {
+        display: none;
+    }
+    .aside {
+        width: 75%;
+    }
+}
+
+/* Phone Size */
+@media (max-width: 576px) {
+
+}
