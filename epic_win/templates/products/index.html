@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% addtoblock "css" %}
+    <link rel="stylesheet" href="/static/css/products.css">
+{% endaddtoblock %}
+
+{% from '/components/items.html' import render_item %}
+{% block body %}
+    <div class="product-items">
+        {% for item in items %}
+            {{ render_item(item) }}
+        {% endfor %}
+    </div>
+{% endblock body %}
+
