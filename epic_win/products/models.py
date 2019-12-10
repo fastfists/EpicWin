@@ -6,7 +6,6 @@ from datetime import datetime
     Coupons type:
         Percentage Discount (PER): (20% off) discount = 0.2
         Money off (SUB): ($20 off )discount = 20.00
-
     Missing:
         Order size
         Order colors
