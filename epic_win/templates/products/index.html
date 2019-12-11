@@ -10,14 +10,12 @@
 
 {% from '/components/items.html' import render_item %}
 {% block body %}
-    <div class="row">
-        {% for item in items %}
-            {{ render_item(item) }}
-            {% if loop.index % 3 == 1 %}
-                </div>
-                <div class="row">
-            {% endif %}
-        {% endfor %}
+    <div id="shop-list">
+        <!-- this portion is rendered by javascript -->
     </div>
 {% endblock body %}
 
+
+{% addtoblock "js" %}
+   <script type="module" src="/static/js/products.js"></script>
+{% endaddtoblock %}
