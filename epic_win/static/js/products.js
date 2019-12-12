@@ -8,6 +8,9 @@ async function render_products() {
     let products = json["products"];
     let html = ""
     for (let i = 0; i < products.length; i++){
+	if( i % 3 == 0) {
+	    html += '<br></div><div class="items">'
+	}
         let product = products[i];
         html += render_item(product);
     }
