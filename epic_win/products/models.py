@@ -6,7 +6,6 @@ from datetime import datetime
     Coupons type:
         Percentage Discount (PER): (20% off) discount = 0.2
         Money off (SUB): ($20 off )discount = 20.00
-
     Missing:
         Order size
         Order colors
@@ -19,7 +18,7 @@ class Product(db.Model):
     image_name = db.Column(db.String(25), nullable=False)
     name = db.Column(db.String(50), unique=True)
     slug = db.Column(db.String(50), index=True)
-    cost = db.Column(db.String(20), nullable=False)
+    cost = db.Column(db.DECIMAL, nullable=False)
     description_long = db.Column(db.Text())
     description_short = db.Column(db.String(100))
 
@@ -46,7 +45,7 @@ class Discount(db.Model):
 class Purchase(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer(), db.ForeignKey('users.id'))
     purchase_date = db.Column(db.DateTime(), default=datetime.utcnow)
     payment_confrimation = db.Column(db.String(20))
 
@@ -81,7 +80,7 @@ class OrderOption(db.Model):
 
 
 user_coupons = db.Table('user_coupons',
-        db.Column('user_id', db.Integer, db.ForeignKey('user.id')),
+        db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
         db.Column('coupon_id', db.Integer, db.ForeignKey('coupon.id')))
 
 
@@ -92,13 +91,13 @@ class Coupon(db.Model):
     discount = db.Column(db.DECIMAL, nullable=False)
     experiation_date = db.Column(db.DateTime, nullable=False)
 
-    users = db.relationship('User', secondary=user_coupons, backref='coupon')
+    users = db.relationship('Users', secondary=user_coupons, backref='coupon')
 
 
 class Reviews(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     title = db.Column(db.String(50))
     body = db.Column(db.Text)
     star_rating = db.Column(db.Integer)
