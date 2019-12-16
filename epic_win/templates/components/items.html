@@ -11,10 +11,10 @@
                 {{ item.name }}
             </p>
             <p id="price">
-                ${{ item.price }}
+		{{ "$%.2f"|format(item.cost) }}
             </p>
         </div>
-        <img class="item-image" src="{{ item.image_url }}" alt="" srcset="">
+        <img class="item-image" src="{{ '/static/images/' + item.image_name }}" alt="" srcset="">
         <div class="spacer"></div>
         <div class="buttons">
             <a href="" class="btn-md dark-blue">View More</a>

@@ -68,6 +68,11 @@ a {
 
 /* Layout */
 
+.row {
+    display: flex;
+    justify-content: space-around;
+}
+
 .container {
     padding-left: 138px;
     margin: 0 auto;
@@ -145,3 +150,10 @@ footer {
     background: #A1167A;
 }
 
+.text-purple {
+    color: #A1167A;
+}
+
+.text-blue {
+    color: #224680;
+}
