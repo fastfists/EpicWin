@@ -103,6 +103,7 @@ a {
     background: #88DFFB;
     border-radius: 50px;
     display: inline-block;
+    text-align: center;
 }
 
 .btn-md {
