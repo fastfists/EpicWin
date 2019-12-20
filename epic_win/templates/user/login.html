@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/css/login.css">
+{% endaddtoblock %}
+
+{% block body %}
+<section class="bg"></section>
+<section class="login-form">
+    <h1 class="text-blue"> Login </h1>
+    <form action="">
+        <div class="userword">
+            <label for="username">username</label>
+            <input type="text" name="username">
+            <label for="password">password</label>
+            <input type="text" name="password">
+        </div>
+        <div class="rememberword">
+            <div>
+                <input type="checkbox" name="rememberme">
+                <label for="rememberme">remember me</label>
+            </div>
+            <a class="text-purple" href=""> forgot your password? </a>
+            <a class="btn dark-blue"> Submit </a>
+        </div>
+    </form>
+</section>
+{% endblock body %}
