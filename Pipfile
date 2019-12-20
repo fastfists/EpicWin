@@ -22,4 +22,4 @@ flask-sekazi = "==0.0.3"
 flask-bcrypt = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "*"
