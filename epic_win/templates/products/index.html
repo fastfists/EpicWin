@@ -10,6 +10,26 @@
 
 {% from '/components/items.html' import render_item %}
 {% block body %}
+    <div class="filters">
+        <p class="subheading-2">Filter by:</p>
+        <div class="filter" id="price-filter">
+            <div class="filter-name">
+                <svg width="21" height="7" viewBox="0 0 21 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line y1="1.05888" x2="21" y2="1.05888" stroke="white"/>
+                <path d="M0 5.87843H21" stroke="white"/>
+                </svg>
+                <p>Price</p>
+            </div>
+            <div class="inner-filter">
+                <p>Between Prices</p>
+                <div class="row" style="align-items: center; width: 100%">
+                    <input type="text">
+                    <p>to</p>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="shop-list">
         <!-- this portion is rendered by javascript -->
     </div>
