@@ -18,7 +18,7 @@
     margin: 0 auto;
     padding-left: 27px;
     padding-right: 50px;
-    padding-top: 21px; 
+    padding-top: 21px;
 }
 
 .userword {
@@ -28,15 +28,6 @@
     width: 425px;
 }
 
-input[type=text] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-  
 .rememberword {
     display: flex;
     flex-direction: column;

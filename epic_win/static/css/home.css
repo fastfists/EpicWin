@@ -3,14 +3,14 @@
 .hero {
     padding-top: 10vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 70vh;
     background: rgba(0,0,0,0);
     position: relative;
     z-index: 1;
 }
 
-/* could be good looking ;) */ 
+/* could be good looking ;) */
 /* .hero:before { */
 /*     content: ""; */
 /*     position: absolute; */
@@ -81,10 +81,33 @@
     text-align: center;
 }
 
+.email-form {
+    width: 50%;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.form-row label{
+    margin-right: 0.5em;
+}
+
 /* Desktop Size */
 @media (max-width: 1025px) {
     .illustration {
+        display: none;
         width: 70%;
+    }
+    .hero {
+        justify-content: space-around;
     }
     .aside {
         margin-right: 0px;
@@ -94,7 +117,6 @@
 /* Tablet Size */
 @media (max-width: 768px) {
     .illustration {
-        display: none;
     }
     .aside {
         width: 75%;

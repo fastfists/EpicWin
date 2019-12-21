@@ -6,6 +6,11 @@
     font-style: normal;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 /* Text */
 h1,.h1, h2,.h2, h3,.h3, h4,.h4, h5,.h5, h6,.h6, p {
     line-height: 110%;
@@ -74,14 +79,13 @@ a {
 }
 
 .container {
-    padding-left: 138px;
-    margin: 0 auto;
+    padding-left: 5%;
+    /* margin: 0 auto; */
 }
 
 /* Desktop Size */
 @media (max-width: 1025px) {
     .container {
-        padding-left: 50px;
     }
 }
 
@@ -99,6 +103,16 @@ a {
 
 
 /* Components */
+
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
 .buttons {
     display: flex;
