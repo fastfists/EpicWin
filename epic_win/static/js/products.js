@@ -9,7 +9,7 @@ async function render_products() {
     let html = "<div class='items'> "
     for (let i = 0; i < products.length; i++){
         let product = products[i];
-        html += render_item(product);
+        html += render_item(product, true);
     }
     html += "</div>"
 //

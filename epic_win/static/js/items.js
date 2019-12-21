@@ -1,4 +1,19 @@
- var render_item = (item) => {
+ var render_item = (item, small=false) => {
+
+    if (small === true){
+        return `
+        <div class="item-sm">
+        <a href="">
+            <img class="" src="/static/images/${item.image_name}" alt="" srcset="">
+        </a>
+        <a href="" class="subheading-2"> ${ item.name } </a>
+        <h4 class="text-blue"> ${ item.cost } </h4>
+        </div>
+        `
+
+    }
+
+
     return `
      <div class="item">
         <div class="product-info">

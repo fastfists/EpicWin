@@ -37,3 +37,21 @@
 
 .items .item .buttons {
 }
+
+.item-sm {
+    align-items: center;
+    box-shadow: 6px 5px 4px rgba(0, 0, 0, 0.27);
+    border-radius: 70px;
+    background: rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0px;
+}
+
+.item-sm:hover {
+    color: #A1167A;
+}
+
+.item-sm * {
+    margin: 10px 40px;
+}
