@@ -22,6 +22,7 @@ def get_product(slug):
 def search():
     """
     page = 1
+    per_page=12
     """
     schema = SearchSchema()
     body = schema.load(request.args)

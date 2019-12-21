@@ -17,4 +17,5 @@
         </div>
     </div>`
 }
+
 export default render_item;
