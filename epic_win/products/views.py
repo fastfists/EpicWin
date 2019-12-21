@@ -8,9 +8,10 @@ views = Blueprint('products', __name__)
 def products():
     return render_template('products/index.html')
 
-@views.route('/single')
-def single():
-    return render_template('products/single_item.html')
+@views.route('/product/<string:slug>')
+def single(slug):
+    product = Product.query.filter(Product.slug == slug).first_or_404()
+    return render_template('products/single_item.html', product = product)
 
 @views.route('/v1/product/<string:slug>', methods=["GET"])
 def get_product(slug):

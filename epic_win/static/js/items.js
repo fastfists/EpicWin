@@ -3,10 +3,10 @@
     if (small === true){
         return `
         <div class="item-sm">
-        <a href="">
+        <a href="/product/${ item.slug}">
             <img class="" src="/static/images/${item.image_name}" alt="" srcset="">
         </a>
-        <a href="" class="subheading-2"> ${ item.name } </a>
+        <a href="/product/${ item.slug}" class="subheading-2"> ${ item.name } </a>
         <h4 class="text-blue"> ${ item.cost } </h4>
         </div>
         `
@@ -27,7 +27,7 @@
         <img class="item-image" src="/static/images/${item.image_name}" alt="" srcset="">
         <div class="spacer"></div>
         <div class="buttons">
-            <a href="" class="btn-md dark-blue">View More</a>
+            <a href="/product/${ item.slug}" class="btn-md dark-blue">View More</a>
             <a href="" class="btn-md dark-blue">Add to cart</a>
         </div>
     </div>`

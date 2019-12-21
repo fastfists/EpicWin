@@ -17,7 +17,7 @@ class Product(db.Model):
     prodcut_type = db.Column(db.String(3), nullable=False)
     image_name = db.Column(db.String(25), nullable=False)
     name = db.Column(db.String(50), unique=True)
-    slug = db.Column(db.String(50), index=True)
+    slug = db.Column(db.String(50), index=True, unique=True)
     cost = db.Column(db.DECIMAL, nullable=False)
     description_long = db.Column(db.Text())
     description_short = db.Column(db.String(100))
