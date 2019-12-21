@@ -6,8 +6,13 @@
     font-style: normal;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 /* Text */
-h1, h2, h3, h4, h5, h6, p {
+h1,.h1, h2,.h2, h3,.h3, h4,.h4, h5,.h5, h6,.h6, p {
     line-height: 110%;
 }
 
@@ -74,10 +79,20 @@ a {
 }
 
 .container {
-    padding-right: 20px;
-    padding-left: 138px;
-    width: 100%;
-    margin: 0 auto;
+    padding-left: 5%;
+    /* margin: 0 auto; */
+}
+
+/* Desktop Size */
+@media (max-width: 1025px) {
+    .container {
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+
+    }
 }
 
 
@@ -88,6 +103,16 @@ a {
 
 
 /* Components */
+
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
 .buttons {
     display: flex;
@@ -103,6 +128,7 @@ a {
     background: #88DFFB;
     border-radius: 50px;
     display: inline-block;
+    text-align: center;
 }
 
 .btn-md {

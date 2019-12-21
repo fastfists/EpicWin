@@ -1,3 +1,5 @@
+/* Extra Large */
+
 .hero {
     padding-top: 10vh;
     display: flex;
@@ -8,13 +10,25 @@
     z-index: 1;
 }
 
+/* could be good looking ;) */
+/* .hero:before { */
+/*     content: ""; */
+/*     position: absolute; */
+/*     top: 0; */
+/*     left: 0; */
+/*     right: 0; */
+/*     bottom: 0; */
+/*     background: transparent; */
+/*     box-shadow: 0px 25px 10px rgba(0, 0, 0, 0.25); */
+/*     transform: rotate(-7.5deg); */
+/* } */
+
 .hero-bg{
     background: #D9DFE5;
     clip-path: polygon(0 0, 100% 0, 100% 71%, 0% 100%);
     height: 70vh;
     margin-bottom: -70vh;
     position: relative;
-    box-shadow: 0px 50px 70px rgba(0, 0, 0, 0.25);
     z-index: 1;
 }
 
@@ -38,12 +52,14 @@
 .heading {
     display: flex;
     align-items: center;
-    padding-top: 100px;
+    padding-top: 90px;
+    align-items: space-around;
 }
 
 .heading h2 {
-    margin-right: 42px;
+    margin-right: 20px;
 }
+
 
 .category .items {
     margin-bottom: 40px;
@@ -52,7 +68,7 @@
 
 .category .shop-more {
     position: relative;
-    left: 80%;
+    float: right;
     top: 70px;
 }
 
@@ -65,3 +81,49 @@
     text-align: center;
 }
 
+.email-form {
+    width: 50%;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.form-row label{
+    margin-right: 0.5em;
+}
+
+/* Desktop Size */
+@media (max-width: 1025px) {
+    .illustration {
+        display: none;
+        width: 70%;
+    }
+    .hero {
+        justify-content: space-around;
+    }
+    .aside {
+        margin-right: 0px;
+    }
+}
+
+/* Tablet Size */
+@media (max-width: 768px) {
+    .illustration {
+    }
+    .aside {
+        width: 75%;
+    }
+}
+
+/* Phone Size */
+@media (max-width: 576px) {
+
+}
