@@ -4,23 +4,22 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-pylint = "*"
 pytest = "*"
+pylint = "*"
 
 [packages]
 flask = "*"
-flask-admin = "*"
-flask-bcrypt = "*"
-flask-login = "*"
-flask-marshmallow = "*"
-flask-migrate = "*"
-flask-restful = "*"
-flask-sekazi = "==0.0.3"
 flask-sqlalchemy = "*"
-gunicorn = "*"
-marshmallow-sqlalchemy = "*"
+flask-restful = "*"
+flask-admin = "*"
+flask-migrate = "*"
+flask-marshmallow = "*"
+flask-login = "*"
 python-dotenv = "*"
-psycopg2 = "*"
+marshmallow-sqlalchemy = "*"
+gunicorn = "*"
+flask-sekazi = "==0.0.3"
+flask-bcrypt = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "*"

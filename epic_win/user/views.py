@@ -30,6 +30,3 @@ def logout():
 @login_required
 def account():
     return render_template('user/account.html', user=current_user)
-
-
-

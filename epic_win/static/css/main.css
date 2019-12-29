@@ -1,5 +1,174 @@
 * {
-    border: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     box-sizing: border-box;
+    font-family: Roboto;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Text */
+h1,.h1, h2,.h2, h3,.h3, h4,.h4, h5,.h5, h6,.h6, p {
+    line-height: 110%;
+}
+
+h1, .h1 {
+    font-size: 60px;
+    line-height: 70px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+h2, .h2 {
+    font-size: 50px;
+    font-weight: bold;
+    line-height: 60px;
+    margin-bottom: 26px;
+}
+
+h3, .h3 {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 45px;
+}
+
+h4, .h4 {
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 40px;
+}
+
+h5, .h5 {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+h6, .h6 {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+p {
+    font-size: 20px;
+}
+
+.subheading-1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.subheading-2 {
+    font-size: 25px;
+    margin-bottom: 9px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Layout */
+
+.row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container {
+    padding-left: 5%;
+    /* margin: 0 auto; */
+}
+
+/* Desktop Size */
+@media (max-width: 1025px) {
+    .container {
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+
+    }
+}
+
+
+/* Colors */
+.text-white {
+    color: white;
+}
+
+
+/* Components */
+
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn,
+.btn-md,
+.btn-lg{
+    text-decoration: none;
+    color: black;
+    padding: .5rem 1rem;
+    background: #88DFFB;
+    border-radius: 50px;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-md {
+    padding: 10px 30px;
+}
+
+.btn-lg {
+    padding: 20px 30px;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.logo {
+    height: 6vh;
+}
+
+footer {
+    padding: 23px 0px;
+    text-align: center;
+    background: #708FB3;
+}
+
+/* Colors */
+
+.dark-blue {
+    color: white;
+    background: #224680;
+}
+
+.dark-purple {
+    color: white;
+    background: #A1167A;
+}
+
+.text-purple {
+    color: #A1167A;
+}
+
+.text-blue {
+    color: #224680;
 }

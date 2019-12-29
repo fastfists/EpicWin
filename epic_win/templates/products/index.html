@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% addtoblock "css" %}
+    <link rel="stylesheet" href="/static/css/products.css">
+{% endaddtoblock %}
+
+{% addtoblock "css" %}
+   <link rel="stylesheet" href="/static/css/items.css">
+{% endaddtoblock %}
+
+{% from '/components/items.html' import render_item %}
+{% block body %}
+    <div id="shop-list">
+        <!-- this portion is rendered by javascript -->
+    </div>
+{% endblock body %}
+
+
+{% addtoblock "js" %}
+   <script type="module" src="/static/js/products.js"></script>
+{% endaddtoblock %}
