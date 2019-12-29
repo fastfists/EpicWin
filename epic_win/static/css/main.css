@@ -119,6 +119,14 @@ input[type=text] {
     justify-content: space-between;
 }
 
+a {
+    color: black;
+}
+
+a:hover {
+    color: #A1167A;
+}
+
 .btn,
 .btn-md,
 .btn-lg{

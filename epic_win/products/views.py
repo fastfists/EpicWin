@@ -8,20 +8,23 @@ views = Blueprint('products', __name__)
 def products():
     return render_template('products/index.html')
 
-@views.route('/single')
-def single():
-    return render_template('products/single_item.html')
+@views.route('/product/<string:slug>')
+def single(slug):
+    product = Product.query.filter(Product.slug == slug).first_or_404()
+    return render_template('products/single_item.html', product = product)
 
-@views.route('/v1/product/<string:slug>', methods=["GET"])
+@views.route('/api/v1/product/<string:slug>', methods=["GET"])
 def get_product(slug):
     schema = ProductSchema()
     product = Product.query.filter(Product.slug == slug).first_or_404()
     return schema.dump(product)
 
-@views.route('/v1/search')
+@views.route('/api/v1/search')
 def search():
     """
-    page = 1
+        page = 1
+        per_page=12
+        q=None
     """
     schema = SearchSchema()
     body = schema.load(request.args)
