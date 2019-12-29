@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Epic Win</title>
-    {% renderblock "css" %}
     {% addtoblock "css" %}
         <link rel="stylesheet" href="/static/css/main.css">
     {% endaddtoblock %}
+    {% renderblock "css", reverse=True %}
 </head>
 <body>
-    {% block body %}
-    {% endblock body %}
+    {% include "components/nav_bar.html" %}
+    <main>
+        {% block body %}
+        {% endblock body %}
+    </main>
 
+    {% include "components/footer.html" %}
     {% renderblock "js" %}
 </body>
 </html>

@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+
+{% addtoblock "css" %}
+    <link rel="stylesheet" href="/static/css/single_item.css">
+{% endaddtoblock %}
+
+{% block body %}
+<section class="item-view">
+    <img class="item-img"src="/static/images/item.png">
+    <div class="info-head">
+    
+        <div class="title">
+            <h4>Nike Air Hurricane</h4>
+            <p>Lighter than air</p>
+        </div>
+        
+        <p>Price <span class="text-purple">$60.00</span></p>
+        <div class="sizes">
+            <p>Size S</p>
+            <div class="choose-size">
+                <p class="size-choice">S</p>
+                <p class="size-choice">M</p>
+                <p class="size-choice">L</p>
+                <p class="size-choice">XL</p>
+            </div>
+        </div>
+        
+    
+        <a class="btn dark-purple" href="#">Add to Cart</a>
+    </div>
+</section>
+<hr>
+<section class="details">
+    <div class="description">
+        <h4>Description</h4>
+        <p>The Nike Air Hurache shoe offers a lightweight upper for maximum comfort and breathability and features a low-profile design with air-sole units for excellent cushioning. The heel with rubber sole and duralon forefoot offers traction and durability. The Nike Air Huarache, combined with a neoprene inner liner and Air Damping, combines quality, comfort and a pleasing exterior. An absolute must have for all sneaker fans and collectors. Whether in sports or leisure, with this sneaker you shine everywhere! </p>
+    </div>
+    <div>
+            <h4>Details</h4>
+            <ul>
+                <li>Brand New</li>
+                <li>Lorem, ipsum.</li>
+                <li>Lorem, ipsum.</li>
+                <li>Lorem, ipsum.</li>
+                <li>Lorem, ipsum.</li>
+            </ul>
+
+    </div>
+</section>
+
+{% endblock body %}

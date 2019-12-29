@@ -1,10 +1,12 @@
 from flask import Blueprint, render_template
+from epic_win.products.models import Product
 
 public = Blueprint('public', __name__)
 
 @public.route('/')
 def index():
-    return render_template("public/index.html")
+    items = Product.query.all()
+    return render_template("public/index.html", items=items)
 
 @public.route('/about')
 def about():
