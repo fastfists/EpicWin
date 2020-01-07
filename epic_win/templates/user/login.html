@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'layout_fast.html' %}
 
 {% addtoblock "css" %}
 <link rel="stylesheet" href="/static/css/login.css">
@@ -10,16 +10,20 @@
     <h1 class="text-blue"> Login </h1>
     <form action="">
         <div class="userword">
-            <label for="username">username</label>
-            <input type="text" name="username">
-            <label for="password">password</label>
-            <input type="text" name="password">
+	    <div class="input-field">
+                <label for="username">Username</label>
+                <input type="text" name="username">
+	    </div>
+	    <div class="input-field">
+                <label for="password">Password</label>
+                <input type="password" name="password">
+	    </div>
         </div>
         <div class="rememberword">
-            <div>
-                <input type="checkbox" name="rememberme">
-                <label for="rememberme">remember me</label>
-            </div>
+                <label>
+			<input type="checkbox" />
+			<span>Remember me</span>
+		</label>
             <a class="text-purple" href=""> forgot your password? </a>
             <a class="btn dark-blue"> Submit </a>
         </div>
