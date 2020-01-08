@@ -1,14 +1,3 @@
-#shop-list {
-    width: 90%;
-}
-
-.filters {
-    width: 10%;
-    flex: 1;
-    background: #A8C7EB;
-}
-
-
 .filter {
 }
 
@@ -22,10 +11,6 @@ input[type=text]{
     color: white;
     padding: 5px 10px;
     cursor: pointer;
-}
-
-.filter svg {
-    margin-right: 0.5em;
 }
 
 .inner-filter {

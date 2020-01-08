@@ -18,4 +18,7 @@ async function render_products() {
 
 document.addEventListener("DOMContentLoaded", function(event) {
     render_products();
+    var elems = document.querySelectorAll('.collapsible');
+    var options = {accordion: false}
+    var instances = M.Collapsible.init(elems, options);
 });

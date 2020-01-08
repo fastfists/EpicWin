@@ -4,10 +4,10 @@
         return `
         <div class="item-sm">
         <a href="/product/${ item.slug}">
-            <img class="" src="/static/images/${item.image_name}" alt="" srcset="">
+            <img class="" src="/static/images/Product Images/${item.image_name}" alt="" srcset="">
         </a>
         <a href="/product/${ item.slug}" class="subheading-2"> ${ item.name } </a>
-        <h4 class="text-blue"> ${ item.cost } </h4>
+        <h4 class="text-blue"> $${ item.cost }.00 </h4>
         </div>
         `
 
@@ -24,7 +24,7 @@
 		        ${ item.cost }
             </p>
         </div>
-        <img class="item-image" src="/static/images/${item.image_name}" alt="" srcset="">
+        <img class="item-image" src="/static/images/Product Images/${item.image_name}" alt="" srcset="">
         <div class="spacer"></div>
         <div class="buttons">
             <a href="/product/${ item.slug}" class="btn-md dark-blue">View More</a>

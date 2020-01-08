@@ -13,6 +13,9 @@ class SearchSchema(ma.Schema):
 
     page = fields.Integer(default=1)
     per_page = fields.Integer(default=12)
+    max = fields.Decimal()
+    min = fields.Decimal()
+    type = fields.String()
     q = fields.String()
 
     def __repr__(self):

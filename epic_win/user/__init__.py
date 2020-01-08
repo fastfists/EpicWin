@@ -4,4 +4,4 @@ from .views import user
 
 def init_app(app):
     app.register_blueprint(user)
-    init_admin(app)
+    init_admin()

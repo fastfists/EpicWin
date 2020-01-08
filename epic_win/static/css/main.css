@@ -73,10 +73,6 @@ a {
 
 /* Layout */
 
-.row {
-    display: flex;
-    justify-content: space-around;
-}
 
 .container {
     padding-left: 5%;
@@ -123,11 +119,11 @@ a {
     color: black;
 }
 
-a:hover {
+a:hover:not(.btn) {
     color: #A1167A;
 }
 
-.btn,
+.button,
 .btn-md,
 .btn-lg{
     text-decoration: none;

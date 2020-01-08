@@ -52,6 +52,12 @@
     color: #A1167A;
 }
 
+.item-sm img {
+    height: auto;
+    max-width: 400px;
+    max-height: 400px;
+}
+
 .item-sm * {
     margin: 10px 20px;
 }
