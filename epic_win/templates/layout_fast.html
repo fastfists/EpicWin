@@ -16,8 +16,10 @@
 
     {% include "components/nav_bar.html" %}
     <main>
-        {% block body %}
-        {% endblock body %}
+        <div class="container">
+            {% block body %}
+            {% endblock body %}
+        </div>
     </main>
 
     {% include "components/footer.html" %}

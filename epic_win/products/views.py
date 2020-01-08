@@ -33,3 +33,6 @@ def search():
     data = query.paginate(page=body.get("page"), per_page=body.get("per_page"), error_out=False)
     return jsonify({"products": ProductSchema(many=True).dump(data.items)})
 
+@views.route('/checkout')
+def checkout():
+    return render_template("products/checkout.html")
