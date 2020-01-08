@@ -1,21 +1,25 @@
 import autoapp
+from slugify import slugify
 from epic_win.ext import db
 from epic_win.products.models import Product
+import csv
 
 db.drop_all()
 db.create_all()
 
-for i in range(24):
+with open('products.csv') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
 
-    product = Product(
-            prodcut_type="Basketball",
-            image_name="item.png",
-            name=f"Nike Air Hurricane {i+1}",
-            slug=f"nike-air-hurricane-{i+1}",
-            cost=39.99,
-            description_long="Ipsum esse sapiente nesciunt ex vero, aperiam maxime necessitatibus. Animi quam ratione iure non neque? Repellendus inventore sit quos nesciunt velit odio ad. Doloremque animi voluptas quod quis maxime Quibusdam fugiat cumque eius distinctio maxime necessitatibus Quos eius excepturi harum placeat pariatur eaque enim enim, harum? Nemo qui laudantium corrupti delectus eligendi Reprehenderit velit delectus asperiores distinctio totam Quasi fugit sint id soluta nesciunt! Amet repellendus saepe autem repudiandae at. Optio nobis natus molestiae placeat architecto Eligendi maxime quam eum cumque maxime Sed obcaecati aliquam eius eligendi corporis. Porro obcaecati quod vel alias unde. Amet debitis eius autem dolor enim.",
-            description_short="Dolor ab sit aliquam minima doloribus. Id iure incidunt quidem iure doloribus Ipsum quas deserunt ex ut quasi Laborum repellat veritatis praesentium accusamus veniam, explicabo? Molestiae non veritatis laborum neque?",
-            )
+        product = Product(
+                name=row.get("Display Name"),
+                prodcut_type=row.get("Category"),
+                image_name=f"{row.get('Image Name')}.png",
+                slug=slugify(row.get("Display Name")),
+                cost=row.get("Cost"),
+                description_long=row.get("Long Description"),
+                description_short=row.get("Short description")
+                )
 
-    db.session.add(product)
-    db.session.commit()
+        db.session.add(product)
+        db.session.commit()

@@ -14,13 +14,13 @@ from datetime import datetime
 class Product(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    prodcut_type = db.Column(db.String(3), nullable=False)
+    prodcut_type = db.Column(db.String(25), nullable=False)
     image_name = db.Column(db.String(25), nullable=False)
     name = db.Column(db.String(50), unique=True)
     slug = db.Column(db.String(50), index=True, unique=True)
     cost = db.Column(db.DECIMAL, nullable=False)
-    description_long = db.Column(db.Text())
-    description_short = db.Column(db.String(100))
+    description_long = db.Column(db.Text, nullable=True)
+    description_short = db.Column(db.Text, nullable=True)
 
     # List of all sizes???
 
