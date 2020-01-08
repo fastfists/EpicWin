@@ -14,7 +14,7 @@ from datetime import datetime
 class Product(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    prodcut_type = db.Column(db.Text, nullable=False)
+    product_type = db.Column(db.Text, nullable=False)
     image_name = db.Column(db.Text, nullable=False)
     name = db.Column(db.Text, unique=True)
     slug = db.Column(db.Text, index=True, unique=True)

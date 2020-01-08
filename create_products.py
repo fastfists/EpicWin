@@ -13,7 +13,7 @@ with open('products.csv') as f:
 
         product = Product(
                 name=row.get("Display Name"),
-                prodcut_type=row.get("Category"),
+                product_type=row.get("Category"),
                 image_name=f"{row.get('Image Name')}.png",
                 slug=slugify(row.get("Display Name")),
                 cost=row.get("Cost"),
