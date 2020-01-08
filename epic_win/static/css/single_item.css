@@ -2,7 +2,7 @@
     display: flex;
     padding-left: 77px;
     justify-content: space-around;
-    margin-top: 
+    margin-top:
     margin-bottom: 63px;
 }
 
@@ -43,5 +43,5 @@
 }
 
 .description {
-    width: 810px;
+    width: 70%;
 }

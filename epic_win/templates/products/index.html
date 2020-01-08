@@ -10,28 +10,38 @@
 
 {% from '/components/items.html' import render_item %}
 {% block body %}
-    <section class="shop-main">
-        <div class="filters">
+    <section class="shop-main row">
+        <div class="filters col s2">
             <p class="subheading-2">Filter by:</p>
-            <div class="filter" id="price-filter">
-                <div class="filter-name">
-                    <svg width="21" height="7" viewBox="0 0 21 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line y1="1.05888" x2="21" y2="1.05888" stroke="white"/>
-                    <path d="M0 5.87843H21" stroke="white"/>
-                    </svg>
-                    <p>Price</p>
-                </div>
-                <div class="inner-filter">
+            <ul class="collapsible">
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">dehaze</i>Price</div>
+                  <div class="collapsible-body">
                     <p>Between Prices</p>
-                    <div class="row" style="align-items: center; width: 100%">
-                        <input type="text">
-                        <p>to</p>
-                        <input type="text">
-                    </div>
-                </div>
-            </div>
+                    <form class="form" id="price-" style="align-items: center; width: 100%">
+                        <div class="input-field">
+                            <input id="min" type="number">
+                            <label for="min">Minimum Price</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="max" type="number">
+                            <label for="max">Maximum Price</label>
+                        </div>
+                        <input type="submit" class="btn z-depth-1" value="Filter">
+                    </form>
+                  </div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">dehaze</i>First</div>
+                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+                <li>
+                  <div class="collapsible-header"><i class="material-icons">dehaze</i>First</div>
+                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+            </ul>
         </div>
-        <div id="shop-list">
+        <div id="shop-list" class="col s10">
             <!-- this portion is rendered by javascript -->
         </div>
     </section>
