@@ -20,6 +20,7 @@ with open('products.csv') as f:
                 description_long=row.get("Long Description"),
                 description_short=row.get("Short description")
                 )
+        print(Product)
 
         db.session.add(product)
         db.session.commit()

@@ -11,7 +11,7 @@ def products():
 @views.route('/product/<string:slug>')
 def single(slug):
     product = Product.query.filter(Product.slug == slug).first_or_404()
-    return render_template('products/single_item.html', product = product)
+    return render_template('products/single_item.html', product=product)
 
 @views.route('/api/v1/product/<string:slug>', methods=["GET"])
 def get_product(slug):
