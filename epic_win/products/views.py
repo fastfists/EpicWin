@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for
 from .models import Product
 from sqlalchemy import or_
 from .schemas import ProductSchema, SearchSchema
@@ -13,6 +13,16 @@ def products():
 def single(slug):
     product = Product.query.filter(Product.slug == slug).first_or_404()
     return render_template('products/single_item.html', product=product)
+
+@views.route('/search', methods=["GET", "POST"])
+def search_form():
+    print(request.args)
+    q = request.args.get("search", None)
+    print(q)
+    if q:
+        return redirect(f"/shop?q={q}")
+    else:
+        return redirect(f"/shop")
 
 @views.route('/api/v1/product/<string:slug>', methods=["GET"])
 def get_product(slug):
