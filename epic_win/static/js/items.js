@@ -2,7 +2,7 @@
 
     if (small === true){
         return `
-        <div class="item-sm">
+        <div class="hoverable item-sm">
         <a href="/product/${ item.slug}">
             <img class="" src="/static/images/Product Images/${item.image_name}" alt="" srcset="">
         </a>

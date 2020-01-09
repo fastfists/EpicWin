@@ -1,24 +1,44 @@
+{% addtoblock "js" %}
+    <script src="/static/js/nav.js"></script>
+{% endaddtoblock %}
+
 {% addtoblock "css" %}
     <link rel="stylesheet" href="/static/css/nav.css">
 {% endaddtoblock %}
 
-<nav class="nav">
-    <div class="logo-section">
-        <img class="logo" src="/static/svg/logo.svg" alt="">
-        <a href="/">
-            <p class="subheading-1">Epic Win</p>
+<nav>
+    <div class="nav-wrapper">
+        <a href="/" class="brand-logo">
+            <img src="/static/svg/logo.svg" alt="">
+            <p>Epic Win</p>
         </a>
-    </div>
-    <div class="search-bar">
-        <input type="text" id="search-bar"></input>
-    </div>
-    <div class="nav-items">
-        <a href="/">home</a>
-        <a href="/about">about</a>
-        <a href="/shop">shop</a>
-        <a href="/login">login</a>
-        <a href="/checkout">checkout</a>
+        <a href="#" data-target="mobile-side-bar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/checkout">Checkout</a></li>
+        </ul>
     </div>
 </nav>
+<nav>
+<div class="nav-wrapper">
+  <form action="/search" method="POST" class="search-form">
+    <div class="input-field">
+      <input id="search" name="search" type="search" required>
+      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+      <i class="material-icons">close</i>
+    </div>
+  </form>
+</div>
+</nav>
 
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="/">home</a></li>
+    <li><a href="/about">about</a></li>
+    <li><a href="/shop">shop</a></li>
+    <li><a href="/login">login</a></li>
+    <li><a href="/checkout">checkout</a></li>
+</ul>
 
