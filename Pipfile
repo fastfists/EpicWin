@@ -22,6 +22,7 @@ flask-sekazi = "==0.0.3"
 flask-bcrypt = "*"
 psycopg2-binary = "*"
 python-slugify = "*"
+flask-security = "*"
 
 [requires]
 python_version = "3.7"

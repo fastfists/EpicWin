@@ -4,6 +4,17 @@
 <link rel="stylesheet" href="/static/css/items.css">
 {% endaddtoblock %}
 
+
+{% macro render_item_small(item) %}
+    <div class="col s4 hoverable item-sm">
+	    <a href="/product/{{item.slug}}">
+		<img class="" src="/static/images/Product Images/{{item.image_name}}" alt="" srcset="">
+        </a>
+        <a href="/product/{{item.slug}}" class="subheading-2"> {{item.name}} </a>
+        <h4 class="text-blue"> ${{ item.cost }} </h4>
+    </div>
+{% endmacro %}
+
 {% macro render_item(item) %}
     <div class="item">
         <div class="product-info">

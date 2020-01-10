@@ -6,13 +6,18 @@
     font-style: normal;
 }
 
+main {
+    flex: 1 0 auto;
+}
+
 body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Text */
-h1,.h1, h2,.h2, h3,.h3, h4,.h4, h5,.h5, h6,.h6, p {
+h1,.h1, h2,.h2, h3,.h3, h4,.h4, h5,.h5, p {
     line-height: 110%;
 }
 
@@ -43,12 +48,6 @@ h4, .h4 {
 }
 
 h5, .h5 {
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 25px;
-}
-
-h6, .h6 {
     font-size: 20px;
     font-weight: bold;
     line-height: 25px;

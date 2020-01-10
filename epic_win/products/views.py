@@ -5,10 +5,6 @@ from .schemas import ProductSchema, SearchSchema
 
 views = Blueprint('products', __name__)
 
-@views.route('/shop')
-def products():
-    return render_template('products/index.html')
-
 @views.route('/product/<string:slug>')
 def single(slug):
     product = Product.query.filter(Product.slug == slug).first_or_404()
@@ -16,22 +12,17 @@ def single(slug):
 
 @views.route('/search', methods=["GET", "POST"])
 def search_form():
-    print(request.args)
-    q = request.args.get("search", None)
+    print(request.form)
+    q = request.form.get("search", None)
     print(q)
     if q:
         return redirect(f"/shop?q={q}")
     else:
         return redirect(f"/shop")
 
-@views.route('/api/v1/product/<string:slug>', methods=["GET"])
-def get_product(slug):
-    schema = ProductSchema()
-    product = Product.query.filter(Product.slug == slug).first_or_404()
-    return schema.dump(product)
 
-@views.route('/api/v1/search')
-def search():
+@views.route('/shop')
+def products():
     """
         page = 1
         per_page=12
@@ -61,8 +52,10 @@ def search():
         tokens = q.split(' ')
         query = query.filter(or_(Product.name.ilike(f"%{token}%") for token in tokens))
 
-    data = query.paginate(page=body.get("page"), per_page=body.get("per_page"), error_out=False)
-    return jsonify({"products": ProductSchema(many=True).dump(data.items), "pages" : data.pages, "total" : data.total })
+    data = query.paginate(page=body.get("page"), per_page=12, error_out=False)
+    context = { "pagination" : data, "q" : body.get("q") }
+
+    return render_template('products/index.html', **context)
 
 @views.route('/checkout')
 def checkout():

@@ -1,53 +1,86 @@
 {% extends 'layout_fast.html' %}
+{% from '/components/items.html' import render_item_small %}
 
 {% addtoblock "css" %}
-    <link rel="stylesheet" href="/static/css/products.css">
+<link rel="stylesheet" href="/static/css/products.css">
 {% endaddtoblock %}
 
 {% addtoblock "css" %}
-   <link rel="stylesheet" href="/static/css/items.css">
+<link rel="stylesheet" href="/static/css/items.css">
 {% endaddtoblock %}
 
-{% from '/components/items.html' import render_item %}
 {% block body %}
-    <section class="shop-main row">
-        <div class="filters col s2">
-            <p class="subheading-2">Filter by:</p>
-            <ul class="collapsible">
-                <li>
-                  <div class="collapsible-header"><i class="material-icons">dehaze</i>Price</div>
-                  <div class="collapsible-body">
-                    <p>Between Prices</p>
-                    <form class="form" id="price-" style="align-items: center; width: 100%">
-                        <div class="input-field">
-                            <input id="min" type="number">
-                            <label for="min">Minimum Price</label>
-                        </div>
-                        <div class="input-field">
-                            <input id="max" type="number">
-                            <label for="max">Maximum Price</label>
-                        </div>
-                        <input type="submit" class="btn z-depth-1" value="Filter">
-                    </form>
-                  </div>
-                </li>
-                <li>
-                  <div class="collapsible-header"><i class="material-icons">dehaze</i>First</div>
-                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
-                <li>
-                  <div class="collapsible-header"><i class="material-icons">dehaze</i>First</div>
-                  <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
-            </ul>
+
+{% if pagination.total == 0 %}
+<section class="container">
+  <h3>No results for "{{q}}"</h3>
+  <p id="cta-empty" class="subsection-2">Have you tried looking at our other options?</p>
+  <a class="btn" href="/shop">Go back to shop home</a>
+</section>
+{% else %}
+
+{% if q %}
+  <h6>(Page {{ pagination.page }} of {{pagination.pages }} pages)  - {{ pagination.total }} results for "{{ q }}" </h6>
+{% else %}
+  <h6>(Page {{ pagination.page }} of {{pagination.pages }} pages)  - {{ pagination.total }} results </h6>
+{% endif %}
+
+<section class="shop-main row">
+  <div class="filters col s2">
+    <p class="subheading-2">Filter by:</p>
+    <ul class="collapsible">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">dehaze</i>Price</div>
+        <div class="collapsible-body">
+          <p>Between Prices</p>
+          <form class="form" id="price-" style="align-items: center; width: 100%">
+            <div class="input-field">
+              <input id="min" type="number">
+              <label for="min">Minimum Price</label>
+            </div>
+            <div class="input-field">
+              <input id="max" type="number">
+              <label for="max">Maximum Price</label>
+            </div>
+            <input type="submit" class="btn z-depth-1" value="Filter">
+          </form>
         </div>
-        <div id="shop-list" class="col s10">
-            <!-- this portion is rendered by javascript -->
-        </div>
-    </section>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">dehaze</i>First</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">dehaze</i>First</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+    </ul>
+  </div>
+  <div class="col s10">
+    <div id="shop-list">
+      {% for item in pagination.items %}
+      {{ render_item_small(item) }}
+      {% endfor %}
+    </div>
+    <ul class='pagination center'>
+      <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+      {%- for page in pagination.iter_pages() %}
+        {% if page %}
+            {% if page != pagination.page %}
+                <li class="waves-effect"><a href="{{ url_for("products.products", page=page) }}">{{ page }}</a></li>
+            {% else %}
+                <li class="active waves-effect"><a href="{{ url_for("products.products", page=page) }}">{{ page }}</a></li>
+            {% endif %}
+        {% endif %}
+      {%- endfor %}
+      <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    </ul>
+  </div>
+</section>
+{% endif %}
 {% endblock body %}
 
 
 {% addtoblock "js" %}
-   <script type="module" src="/static/js/products.js"></script>
+<script type="module" src="/static/js/products.js"></script>
 {% endaddtoblock %}

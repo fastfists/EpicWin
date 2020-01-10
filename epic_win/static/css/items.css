@@ -29,8 +29,6 @@
     background: rgba(255, 255, 255, 0)
 }
 
-
-
 .items .item {
     margin-left: 45px;
 }
@@ -53,10 +51,19 @@
 
 .item-sm img {
     height: auto;
-    max-width: 400px;
-    max-height: 400px;
+    max-width: 75%;
+    max-height: 75%;
+    margin: auto;
 }
 
 .item-sm * {
     margin: 10px 20px;
+}
+
+#shop-list {
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0)
 }
