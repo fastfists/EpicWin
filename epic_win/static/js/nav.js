@@ -4,6 +4,3 @@ var submit_search = async function() {
     data.append("q", q);
 }
 
-document.querySelector(".search-form").onsubmit = async function(){
-    await submit_search();
-};
