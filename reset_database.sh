@@ -1,6 +1,6 @@
 #/bin/sh
 rm -rf migrations
 flask db init
-flask db migrate
+lask db migrate
 flask db upgrade
 python create_products.py

@@ -10,6 +10,7 @@ def create_app(config_object='epic_win.settings') -> Flask:
     app = Flask(__name__)
     app.config.from_object(config_object)
     register_extensions(app)
+    init_security(app)
 
     user.init_app(app)
     public.init_app(app)
@@ -19,8 +20,7 @@ def create_app(config_object='epic_win.settings') -> Flask:
     return app
 
 def register_extensions(app):
-    from epic_win.ext import migrate, ma, admin, db, sekazi, login_manager, bcrypt, sekazi, security
-    from .user import Users, Role
+    from epic_win.ext import migrate, ma, admin, db, login_manager, bcrypt, sekazi, security
 
     admin.init_app(app)
     db.init_app(app)
@@ -33,5 +33,12 @@ def register_extensions(app):
     migrate.init_app(app, db)
     bcrypt.init_app(app)
 
+def init_security(app):
+    from epic_win.ext import security, db
+    from epic_win.admin import ExtendedRegisterForm
+    from .user import Users, Role
+
+    print("initing")
     user_datastore = SQLAlchemyUserDatastore(db, Users, Role)
-    security.init_app(app, user_datastore)
+    security.init_app(app, user_datastore,
+            register_form=ExtendedRegisterForm)
