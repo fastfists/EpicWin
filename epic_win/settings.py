@@ -1,26 +1,36 @@
 from os import getenv
 
 FLASK_APP=getenv("FLASK_APP")
-FLASK_DEBUG=getenv("FLASK_DEBUG")
-FLASK_ADMIN_SWATCH=getenv("FLASK_ADMIN_SWATCH")
+FLASK_DEBUG=1
+FLASK_ADMIN_SWATCH="cerulean"
 SQLALCHEMY_DATABASE_URI=getenv("SQLALCHEMY_DATABASE_URI")
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+SECRET_KEY=getenv("SECRET_KEY")
+
 
 # Flask-Security config
-SECURITY_URL_PREFIX = "/admin"
 SECURITY_PASSWORD_HASH = "pbkdf2_sha512"
 SECURITY_PASSWORD_SALT = "ATGUOHAELKiubahiughaerGOJAEGj"
 
-# # Flask-Security URLs, overridden because they don't put a / at the end
-# SECURITY_LOGIN_URL = "/login"
-# SECURITY_LOGOUT_URL = "/logout"
-# SECURITY_REGISTER_URL = "/register"
+# Flask-Security URLs, overridden because they don't put a / at the end
 
-# SECURITY_POST_LOGIN_VIEW = "/admin/"
-# SECURITY_POST_LOGOUT_VIEW = "/admin/"
-# SECURITY_POST_REGISTER_VIEW = "/admin/"
+SECURITY_POST_LOGIN_VIEW = "/admin/"
+SECURITY_POST_LOGOUT_VIEW = "/admin/"
+SECURITY_POST_REGISTER_VIEW = "/admin/"
 
 # Flask-Security features
+
 SECURITY_REGISTERABLE = True
-SECURITY_SEND_REGISTER_EMAIL = False
-SQLALCHEMY_TRACK_MODIFICATIONS = False
+SECURITY_SEND_REGISTER_EMAIL = True
+SECURITY_CHANGEABLE = True
+SECURITY_TRACKABLE = True
+SECURITY_RECOVERABLE = True
+
+# Flask-Security Email features
+
+EMAIL_SUBJECT_REGISTER = "Welcome to the Epic rewards program"
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 465
+MAIL_USE_SSL = True
+MAIL_USERNAME = 'epic.wins.company@gmail.com'
+MAIL_PASSWORD = 'Epic.win1'

@@ -5,6 +5,7 @@
 {% endaddtoblock %}
 
 {% block body %}
+{{ super() }}
 <section class="bg"></section>
 <section class="login-form">
     <h1 class="text-blue"> Login </h1>
@@ -20,7 +21,7 @@
 	    </div>
         </div>
         <div class="rememberword">
-                <label>
+        <label>
 			<input type="checkbox" />
 			<span>Remember me</span>
 		</label>
