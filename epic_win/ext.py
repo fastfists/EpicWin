@@ -6,6 +6,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_sekazi import Sekazi
 from flask_security import Security
+from flask_mail import Mail
 
 sekazi = Sekazi()
 login_manager = LoginManager()
@@ -15,3 +16,4 @@ ma = Marshmallow()
 admin = Admin(template_mode="bootstrap3")
 bcrypt = Bcrypt()
 security = Security()
+mail = Mail()
