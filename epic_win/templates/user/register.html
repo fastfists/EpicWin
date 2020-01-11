@@ -1,0 +1,36 @@
+{% extends 'layout_fast.html' %}
+
+{% addtoblock "css" %}
+<link rel="stylesheet" href="/static/css/register.css">
+{% endaddtoblock %}
+
+{% block body %}
+<section class="bg"></section>
+<section class="login-form">
+    <h1 class="text-blue"> Register </h1>
+    <form action=""
+        <div class="userword">
+            <div class="input-field">
+                <label for="username">Username</label>
+                <input type="text" name="username">
+            </div>
+            <div class="input-field">
+                <label for="email">Email</label>
+                <input type="email" name="email">
+            </div>
+            <div class="input-field">
+                <label for="password">Password</label>
+                <input type="password" name="password">
+            </div>
+            <div class="input-field">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" name="confirm-password">
+            </div>
+        </div>
+        <div class="rememberword">
+            <a class="text-purple" href="/login">Already have an account? login</a>
+            <a class="btn dark-blue"> Submit </a>
+        </div>
+    </form>
+</section>
+{% endblock body %}

@@ -6,7 +6,12 @@ from .schemas import UserSchema
 
 user = Blueprint('user', __name__)
 
-@user.route('/login', methods=['GET', 'POST'])
+@user.route('/register_custom', methods=['GET', 'POST'])
+def register():
+
+    return render_template('user/register.html')
+
+@user.route('/login_custom', methods=['GET', 'POST'])
 def login():
 
     if request.method == "POST":
