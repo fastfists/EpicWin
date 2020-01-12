@@ -22,7 +22,7 @@ flask-sekazi = "==0.0.3"
 flask-bcrypt = "*"
 psycopg2-binary = "*"
 python-slugify = "*"
-flask-security = "*"
+flask-security = {git = "https://github.com/mattupstate/flask-security"}
 
 [requires]
 python_version = "3.7"

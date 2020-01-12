@@ -24,7 +24,10 @@ class Product(db.Model):
 
     # List of all sizes???
     def __repr__(self):
-        return f"<Product> {self.name}:${self.cost}"
+        return f"<Product {self.name} - ${self.cost}> "
+
+    def __repr__(self):
+        return f"{self.name} - ${self.cost}"
 
     def get_cost(self):
         return self.cost
@@ -53,6 +56,12 @@ class Purchase(db.Model):
 
     items = db.relationship("PurchaseItem", backref="purchase")
 
+    def __repr__(self):
+        return f"<Purchase ({self.id}) - Total: {self.calc_total()}>"
+
+    def __str__(self):
+        return f"({self.id}) - Total: {self.calc_total()}"
+
     def calc_total(self):
         return sum([ item.calc_total() for item in self.items])
 
@@ -63,8 +72,16 @@ class PurchaseItem(db.Model):
     purchase_id = db.Column(db.Integer, db.ForeignKey('purchase.id'))
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
     count = db.Column(db.Integer, nullable=False, default=1)
+
+    def __repr__(self):
+        return f"<PurchaseItem ({self.product.name}) * {self.count} - Total: {self.calc_total()}>"
+
+    def __repr__(self):
+        return f"({self.product.name}) * {self.count} - Total: {self.calc_total()}"
     # color
     # size
+
+
 
     def calc_total(self):
         return self.product.get_cost() * self.count

@@ -6,6 +6,8 @@ public = Blueprint('public', __name__)
 
 @public.route('/')
 def index():
+    if current_user:
+        print(current_user)
     items = Product.query.all()
     return render_template("public/index.html", items=items)
 

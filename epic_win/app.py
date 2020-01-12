@@ -20,7 +20,7 @@ def create_app(config_object='epic_win.settings') -> Flask:
     return app
 
 def register_extensions(app):
-    from epic_win.ext import migrate, ma, admin, db, login_manager, bcrypt, sekazi, security
+    from epic_win.ext import migrate, ma, admin, db, login_manager, bcrypt, sekazi, security, mail
 
     admin.init_app(app)
     db.init_app(app)
@@ -32,6 +32,7 @@ def register_extensions(app):
     ma.init_app(app)
     migrate.init_app(app, db)
     bcrypt.init_app(app)
+    mail.init_app(app)
 
 def init_security(app):
     from epic_win.ext import security, db

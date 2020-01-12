@@ -10,6 +10,12 @@ class Role(db.Model, RoleMixin):
     name = db.Column(db.String(80), unique=True)
     description = db.Column(db.String(255))
 
+    def __repr__(self):
+        return f"<Role: {self.name}>"
+
+    def __str__(self):
+        return f"{self.name}"
+
 class Users(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -26,4 +32,9 @@ class Users(db.Model, UserMixin):
     roles = db.relationship('Role', secondary=roles_users,
             backref=db.backref('users', lazy='dynamic'))
     profile_picture = db.Column(db.String(20))
+    
+    def __repr__(self):
+        return f"<User: {self.username} - {self.email}>"
 
+    def __str__(self):
+        return f"{self.username} - {self.email}"
