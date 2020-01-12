@@ -28,8 +28,8 @@
         <img class="item-image" src="{{ '/static/images/Product Images/' + item.image_name }}" alt="" srcset="">
         <div class="spacer"></div>
         <div class="buttons">
-            <a href="" class="btn-md dark-blue">View More</a>
-            <a href="" class="btn-md dark-blue">Add to cart</a>
+            <a href="/product/{{item.slug}}" class="btn-md dark-blue">View More</a>
+            <a class="btn-md dark-blue">Add to cart</a>
         </div>
     </div>
 {% endmacro %}

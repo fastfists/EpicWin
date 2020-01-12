@@ -8,7 +8,10 @@ views = Blueprint('products', __name__)
 @views.route('/product/<string:slug>')
 def single(slug):
     product = Product.query.filter(Product.slug == slug).first_or_404()
-    return render_template('products/single_item.html', product=product)
+    similar_items = Product.query.filter(Product.product_type == product.product_type).filter(Product.id != product.id).paginate(page=1, per_page=3)
+
+    context = {"product": product, "similar_items" : similar_items}
+    return render_template('products/single_item.html', **context)
 
 @views.route('/search', methods=["GET", "POST"])
 def search_form():
@@ -37,11 +40,11 @@ def products():
 
     if body.get("min"):
         min_price = body.get("min")
-        query = query.filter(Product.cost <= min_price)
+        query = query.filter(Product.cost >= min_price)
 
     if body.get("max"):
         max_price = body.get("max")
-        query = query.filter(Product.cost >= max_price)
+        query = query.filter(Product.cost <= max_price)
 
     if body.get("type"):
         product_type = body.get("type")

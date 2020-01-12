@@ -41,7 +41,7 @@
           <p>Between Prices</p>
           <form action="" class="form" id="price-" style="align-items: center; width: 100%">
             <div class="input-field">
-              <input name="max" id="min" type="number">
+              <input name="min" id="min" type="number">
               <label for="min">Minimum Price</label>
             </div>
             <div class="input-field">
@@ -72,7 +72,7 @@
   <div class="col s10">
     <div id="shop-list">
       {% for item in pagination.items %}
-      {{ render_item_small(item) }}
+        {{ render_item_small(item) }}
       {% endfor %}
     </div>
     <ul class='pagination center'>
