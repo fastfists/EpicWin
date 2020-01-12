@@ -9,6 +9,12 @@
 <link rel="stylesheet" href="/static/css/items.css">
 {% endaddtoblock %}
 
+{% addtoblock "js" %}
+<script src="/static/js/products.js"></script>
+<script>
+</script>
+{% endaddtoblock %}
+
 {% block body %}
 
 {% if pagination.total == 0 %}
@@ -33,22 +39,18 @@
         <div class="collapsible-header"><i class="material-icons">dehaze</i>Price</div>
         <div class="collapsible-body">
           <p>Between Prices</p>
-          <form class="form" id="price-" style="align-items: center; width: 100%">
+          <form action="" class="form" id="price-" style="align-items: center; width: 100%">
             <div class="input-field">
-              <input id="min" type="number">
+              <input name="max" id="min" type="number">
               <label for="min">Minimum Price</label>
             </div>
             <div class="input-field">
-              <input id="max" type="number">
+              <input name="max" id="max" type="number">
               <label for="max">Maximum Price</label>
             </div>
             <input type="submit" class="btn z-depth-1" value="Filter">
           </form>
         </div>
-      </li>
-      <li>
-        <div class="collapsible-header"><i class="material-icons">dehaze</i>First</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">dehaze</i>First</div>
@@ -63,17 +65,17 @@
       {% endfor %}
     </div>
     <ul class='pagination center'>
-        <li class="waves-effect"><a href="{{ url_for("products.products", page=pagination.page - 1) }}"><i class="material-icons">chevron_left</i></a></li>
+        <li class="waves-effect"><a onclick="flip_to_page({{pagination.page - 1}})"><i class="material-icons">chevron_left</i></a></li>
       {%- for page in pagination.iter_pages() %}
         {% if page %}
             {% if page != pagination.page %}
-                <li class="waves-effect"><a href="{{ url_for("products.products", page=page) }}">{{ page }}</a></li>
+                <li class="waves-effect"><a onclick="flip_to_page({{ page }})">{{ page }}</a></li>
             {% else %}
-                <li class="active waves-effect"><a href="{{ url_for("products.products", page=page) }}">{{ page }}</a></li>
+                <li class="active waves-effect"><a onclick="flip_to_page({{ page }})">{{ page }}</a></li>
             {% endif %}
         {% endif %}
       {%- endfor %}
-      <li class="waves-effect"><a href="{{ url_for("products.products", page=pagination.page - 1) }}"><i class="material-icons">chevron_right</i></a></li>
+      <li class="waves-effect"><a onclick="flip_to_page({{pagination.page + 1}})"><i class="material-icons">chevron_right</i></a></li>
     </ul>
   </div>
 </section>

@@ -35,13 +35,13 @@ def products():
     body = schema.load(request.args)
     query = Product.query
 
-    if body.get("max"):
-        max_price = body.get("max")
-        query = query.filter(Product.cost <= max_price)
+    if body.get("min"):
+        min_price = body.get("min")
+        query = query.filter(Product.cost <= min_price)
 
     if body.get("max"):
         max_price = body.get("max")
-        query = query.filter(Product.cost <= max_price)
+        query = query.filter(Product.cost >= max_price)
 
     if body.get("type"):
         product_type = body.get("type")
