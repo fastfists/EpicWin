@@ -1,5 +1,4 @@
 {% extends 'layout_fast.html' %}
-{% include "security/_messages.html" %}
 
 {% addtoblock "css" %}
 <link rel="stylesheet" href="/static/css/login.css">
@@ -24,5 +23,6 @@
         </div>
     </form>
 </section>
+{% include "security/_messages.html" %}
 {% endblock body %}
 

@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_security import current_user, login_required
 from epic_win.products.models import Product
 
 public = Blueprint('public', __name__)
