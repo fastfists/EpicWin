@@ -53,8 +53,19 @@
         </div>
       </li>
       <li>
-        <div class="collapsible-header"><i class="material-icons">dehaze</i>First</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        <div class="collapsible-header"><i class="material-icons">dehaze</i>Category</div>
+        <div class="collapsible-body">
+          <form action="" class="form" id="category-" style="align-items: center; width: 100%">
+            <select name="type">
+                <option value="" disabled selected>Choose a category</option>
+                {% for option in categories %}
+                    <option value="{{option}}">{{ option }}</option>
+                {% endfor %}
+            </select>
+            <label>Choose a Category</label>
+            <input type="submit" class="btn z-depth-1" value="Filter">
+          </form>
+        </div>
       </li>
     </ul>
   </div>

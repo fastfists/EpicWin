@@ -53,7 +53,19 @@ def products():
         query = query.filter(or_(Product.name.ilike(f"%{token}%") for token in tokens))
 
     data = query.paginate(page=body.get("page"), per_page=12, error_out=False)
-    context = { "pagination" : data, "q" : body.get("q") }
+
+    categories = ["Nike",
+                  "UnderArmour",
+                  "Epic Wins",
+                  "Camping/Hiking",
+                  "Cowboys",
+                  "Hunting Gear",
+                  "Cycling/Biking",
+                  "Fishing",
+                  "Winter Sports",
+                  "Baltimore Raven"]
+
+    context = { "pagination" : data, "q" : body.get("q"), "categories" : categories }
 
     return render_template('products/index.html', **context)
 

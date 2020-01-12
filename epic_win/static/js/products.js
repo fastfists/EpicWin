@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, {accordion : false} );
+    var colapse_elems = document.querySelectorAll('.collapsible');
+    var colapse_instances = M.Collapsible.init(colapse_elems, {accordion : false} );
+
+    var select_elems = document.querySelectorAll('select');
+    var select_instances = M.FormSelect.init(select_elems, {});
 });
 
 var flip_to_page = function(i) {
