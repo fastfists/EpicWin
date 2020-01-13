@@ -12,16 +12,20 @@ text-align: right;
     float: right;
 }
 
+.pic1{
+    align-self: center;
+}
+
 .pg1 {
-    text-align: center;
+    text-align: left;
 }
 
 .pg2 {
-    text-align: center;
+    text-align: left;
 }
 
 .head {
-    text-align: center;
+    text-align: left;
 }
 
 #body { 
