@@ -21,11 +21,12 @@
 
         <p>Price <span class="text-purple">${{ product.cost }}</span></p>
 
-        <form class="form add_to_cart">
+        <form action="/add-to-cart" class="form add_to_cart">
             <div class="quantity input-field">
                 <input value=1 name="quantity" id="quantity" type="number">
                 <label for="quantity">Quantity</label>
             </div>
+	    <input type="hidden" id="product" name="product" value="{{product.slug}}">
             <input type="submit" class="btn z-depth-1 dark-purple" value="Add to cart">
         </form>
     </div>

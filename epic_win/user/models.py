@@ -33,8 +33,16 @@ class Users(db.Model, UserMixin):
             backref=db.backref('users', lazy='dynamic'))
     profile_picture = db.Column(db.String(20))
     
+    
     def __repr__(self):
         return f"<User: {self.username} - {self.email}>"
 
     def __str__(self):
         return f"{self.username} - {self.email}"
+
+    def get_cart(self):
+        for purchase in self.purchases:
+            if purchase.is_checkout == True:
+                return purchase
+        return None
+    

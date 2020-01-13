@@ -1,7 +1,9 @@
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for
-from .models import Product
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash
+from epic_win.ext import db
+from flask_security import current_user, login_required
+from .models import Product, PurchaseItem, Purchase
 from sqlalchemy import or_
-from .schemas import ProductSchema, SearchSchema
+from .schemas import ProductSchema, SearchSchema, AddToCartSchema
 
 views = Blueprint('products', __name__)
 
@@ -12,6 +14,24 @@ def single(slug):
 
     context = {"product": product, "similar_items" : similar_items}
     return render_template('products/single_item.html', **context)
+
+@views.route("/add-to-cart", methods=["GET", "POST"])
+@login_required
+def add_to_cart():
+    schema = AddToCartSchema()
+    body = schema.load(request.args)
+
+    product = Product.query.filter(Product.slug == body.get("product")).first_or_404()
+    item = PurchaseItem(product=product, count=body.get("quantity"))
+
+    cart = current_user.get_cart() or Purchase(user=current_user, is_checkout=True)
+    cart.items.append(item)
+
+    db.session.add(cart)
+    db.session.add(item)
+    db.session.commit()
+    flash("Added to cart")
+    return redirect("/shop")
 
 @views.route('/search', methods=["GET", "POST"])
 def search_form():
