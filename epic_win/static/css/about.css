@@ -6,20 +6,13 @@ display:flex;
 .b {
     display:flex;
 }
-.pic3 {
-    float: left;
-}
-
-.pic2 {
-    float: right;
-}
 
 .pic1{
     align-self: center;
 }
 
 .pg1 {
-    text-align: left;
+    align-content: left;
 }
 
 .pg2 {
