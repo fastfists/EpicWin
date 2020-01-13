@@ -18,8 +18,6 @@ def single(slug):
 @views.route("/add-to-cart", methods=["GET", "POST"])
 @login_required
 def add_to_cart():
-    schema = AddToCartSchema()
-    body = schema.load(request.args)
 
     product = Product.query.filter(Product.slug == body.get("product")).first_or_404()
     item = PurchaseItem(product=product, count=body.get("quantity"))

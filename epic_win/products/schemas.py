@@ -2,6 +2,7 @@ from .models import Product
 from epic_win.ext import ma
 from marshmallow import fields
 
+
 class ProductSchema(ma.ModelSchema):
 
     cost = fields.Float()
@@ -22,7 +23,7 @@ class SearchSchema(ma.Schema):
         return self.page
 
 class AddToCartSchema(ma.Schema):
-    
+
     product = fields.String()
     quantity = fields.Integer()
 

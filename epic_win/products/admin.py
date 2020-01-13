@@ -6,3 +6,4 @@ def init_admin():
     tables = [Product, Discount, Purchase, PurchaseItem, OrderOption, Coupon, Reviews]
     for table in tables:
         admin.add_view(ModelView(table, db.session))
+
