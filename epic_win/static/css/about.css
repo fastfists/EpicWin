@@ -1,9 +1,11 @@
 
 .a {
-text-align: right;
-
+display:flex;
 }
 
+.b {
+    display:flex;
+}
 .pic3 {
     float: left;
 }
