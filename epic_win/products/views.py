@@ -97,5 +97,3 @@ def checkout():
 
     return render_template("products/checkout.html", cart=current_user.get_cart())
 
-
-

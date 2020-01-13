@@ -4,6 +4,33 @@
 	<link rel="stylesheet" href="/static/css/checkout.css">
 {% endaddtoblock %}
 
+{% macro render_list_item(item, count) %}
+<li class="collection-item avatar">
+  <img src="{{ '/static/images/Product Images/' + item.image_name }}" alt="" class="circle">
+  <span class="title">{{ item.name }} </span>
+  <p>{{ item.description_short }}</p>
+  <a href="#!" class="secondary-content"><i class="material-icons">remove_circle</i></a>
+</li>
+
+{#
+<div class="card list-card horizontal">
+  <div class="card-image">
+    <img src="{{ '/static/images/Product Images/' + item.image_name }}">
+  </div>
+  <div class="card-stacked">
+    <div class="card-content">
+        <p class="subheading-1">{{ item.name }}</p>
+        <p>{{ item.description_short }}</p>
+    </div>
+    <div class="card-action">
+      <a href="#">View</a>
+      <a href="#">Remove from Cart</a>
+    </div>
+  </div>
+  <h4>${{ item.cost }} </h4>
+</div> #}
+{% endmacro %}
+
 {% block body %}
 
 <div class="shipping card center dark-purple">
@@ -11,4 +38,18 @@
 	<p>On all orders until 2021</p>
 </div>
 
+<div class="shop-main row">
+    <div class="collection item-section col s6">
+        {% for item in cart.items %}
+            {{ render_list_item(item.product, item.count) }}
+        {% endfor %}
+    </div>
+    <div class="col s3">
+        <div class="card-panel">
+            <h3>Order Summary</h3>
+            <hr>
+            <p></p>
+        </div>
+    </div>
+</div>
 {% endblock body %}
