@@ -22,6 +22,10 @@ text-align: right;
     line-height: 57px;
 }
 
+.head {
+    text-align: center;
+}
+
 #body { 
 background-image: url( );
 background-color: #000000;
