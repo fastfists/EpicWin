@@ -1,9 +1,15 @@
 from .models import *
 from epic_win.ext import admin, db
-from flask_admin.contrib.sqla import ModelView
+from epic_win.admin import CustomView
 
 def init_admin():
-    tables = [Product, Discount, Purchase, PurchaseItem, OrderOption, Coupon, Reviews]
+    tables = [Discount, Purchase, PurchaseItem, OrderOption, Coupon, Reviews]
+    admin.add_view(CustomView(ProductView, db.session))
     for table in tables:
-        admin.add_view(ModelView(table, db.session))
+        admin.add_view(CustomView(table, db.session))
+
+class ProductView(CustomView):
+
+    column_searchable_list = ('name',)
+    column_filters = ('name', 'cost', 'product_type')
 
