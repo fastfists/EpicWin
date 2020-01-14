@@ -1,4 +1,5 @@
 from flask import Flask
+import paypalrestsdk as paypal
 from flask_security import SQLAlchemyUserDatastore
 
 
@@ -16,6 +17,11 @@ def create_app(config_object='epic_win.settings') -> Flask:
     public.init_app(app)
     products.init_app(app)
 
+    print(app.config[ "PAYPAL_CLIENT_ID" ])
+    paypal.configure({
+        "mode": "sandbox",
+        "client_id": app.config[ "PAYPAL_CLIENT_ID" ],
+        "client_secret": app.config[ "PAYPAL_CLIENT_SECRET" ]})
 
     return app
 

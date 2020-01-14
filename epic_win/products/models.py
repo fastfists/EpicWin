@@ -85,7 +85,7 @@ class PurchaseItem(db.Model):
         return {"name" : self.product.name,
                 "quantity": self.count,
                 "currency": "USD",
-                "price": float(self.calc_total()),
+                "price": float(self.product.cost),
                 "sku" : "item"}
 
     def __repr__(self):
@@ -96,9 +96,7 @@ class PurchaseItem(db.Model):
 
     # color
     # size
-
-
-
+    
     def calc_total(self):
         return self.product.get_cost() * self.count
 
