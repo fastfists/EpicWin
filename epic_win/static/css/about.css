@@ -1,14 +1,14 @@
 
 .a {
 display:flex;
-left: 400px;
-right: 140px;
+padding-left: 400px;
+padding-right: 140px;
 }
 
 .b {
     display:flex;
-    left: 140px;
-    right: 140px;
+    padding-left: 140px;
+    padding-right: 140px;
 }
 
 .pic1{
@@ -17,7 +17,7 @@ right: 140px;
 
 .container {
     align-content: center;
-    padding-left: 140px;
+    padding-left: 100px;
     padding-right: 140px;
 }
 
