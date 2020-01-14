@@ -13,9 +13,9 @@ justify-content: space-between;
     padding-right: 140px;
 }
 
-.top{
+.top {
     font-size: 60px;
-    background-color: #000000;
+    background: #000000;
     text-align: center;
 }
 .container {
