@@ -21,3 +21,8 @@ class SearchSchema(ma.Schema):
     def __repr__(self):
         return self.page
 
+class AddToCartSchema(ma.Schema):
+    
+    product = fields.String()
+    quantity = fields.Integer()
+

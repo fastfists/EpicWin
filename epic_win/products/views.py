@@ -1,14 +1,37 @@
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for
-from .models import Product
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash
+from epic_win.ext import db
+from flask_security import current_user, login_required
+from .models import Product, PurchaseItem, Purchase
 from sqlalchemy import or_
-from .schemas import ProductSchema, SearchSchema
+from .schemas import ProductSchema, SearchSchema, AddToCartSchema
 
 views = Blueprint('products', __name__)
 
 @views.route('/product/<string:slug>')
 def single(slug):
     product = Product.query.filter(Product.slug == slug).first_or_404()
-    return render_template('products/single_item.html', product=product)
+    similar_items = Product.query.filter(Product.product_type == product.product_type).filter(Product.id != product.id).paginate(page=1, per_page=3)
+
+    context = {"product": product, "similar_items" : similar_items}
+    return render_template('products/single_item.html', **context)
+
+@views.route("/add-to-cart", methods=["GET", "POST"])
+@login_required
+def add_to_cart():
+    schema = AddToCartSchema()
+    body = schema.load(request.args)
+
+    product = Product.query.filter(Product.slug == body.get("product")).first_or_404()
+    item = PurchaseItem(product=product, count=body.get("quantity"))
+
+    cart = current_user.get_cart() or Purchase(user=current_user, is_checkout=True)
+    cart.items.append(item)
+
+    db.session.add(cart)
+    db.session.add(item)
+    db.session.commit()
+    flash("Added to cart")
+    return redirect("/shop")
 
 @views.route('/search', methods=["GET", "POST"])
 def search_form():
@@ -35,9 +58,9 @@ def products():
     body = schema.load(request.args)
     query = Product.query
 
-    if body.get("max"):
-        max_price = body.get("max")
-        query = query.filter(Product.cost <= max_price)
+    if body.get("min"):
+        min_price = body.get("min")
+        query = query.filter(Product.cost >= min_price)
 
     if body.get("max"):
         max_price = body.get("max")
@@ -53,7 +76,19 @@ def products():
         query = query.filter(or_(Product.name.ilike(f"%{token}%") for token in tokens))
 
     data = query.paginate(page=body.get("page"), per_page=12, error_out=False)
-    context = { "pagination" : data, "q" : body.get("q") }
+
+    categories = ["Nike",
+                  "UnderArmour",
+                  "Epic Wins",
+                  "Camping/Hiking",
+                  "Cowboys",
+                  "Hunting Gear",
+                  "Cycling/Biking",
+                  "Fishing",
+                  "Winter Sports",
+                  "Baltimore Raven"]
+
+    context = { "pagination" : data, "q" : body.get("q"), "categories" : categories }
 
     return render_template('products/index.html', **context)
 

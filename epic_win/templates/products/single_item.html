@@ -1,7 +1,12 @@
 {% extends 'layout_fast.html' %}
 
+{% from "components/items.html" import render_item %}
 {% addtoblock "css" %}
     <link rel="stylesheet" href="/static/css/single_item.css">
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+    <script rel="stylesheet" href="/static/js/single_item.js" />
 {% endaddtoblock %}
 
 {% block body %}
@@ -15,18 +20,15 @@
         </div>
 
         <p>Price <span class="text-purple">${{ product.cost }}</span></p>
-        <div class="sizes">
-            <p>Size S</p>
-            <div class="choose-size">
-                <p class="size-choice">S</p>
-                <p class="size-choice">M</p>
-                <p class="size-choice">L</p>
-                <p class="size-choice">XL</p>
+
+        <form action="/add-to-cart" class="form add_to_cart">
+            <div class="quantity input-field">
+                <input value=1 name="quantity" id="quantity" type="number">
+                <label for="quantity">Quantity</label>
             </div>
-        </div>
-
-
-        <a class="btn dark-purple" href="#">Add to Cart</a>
+	    <input type="hidden" id="product" name="product" value="{{product.slug}}">
+            <input type="submit" class="btn z-depth-1 dark-purple" value="Add to cart">
+        </form>
     </div>
 </section>
 <hr>
@@ -34,6 +36,19 @@
     <div class="description">
         <h4>Description</h4>
         <p>{{ product.description_long }}</p>
+    </div>
+</section>
+
+<section class="details">
+    <div class="description">
+        <h4>Similar Items</h4>
+        <div class="row">
+          {% for item in similar_items.items %}
+            <div class="col s4">
+                {{ render_item(item) }}
+            </div>
+          {% endfor %}
+        </div>
     </div>
 </section>
 

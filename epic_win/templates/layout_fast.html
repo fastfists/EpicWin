@@ -26,6 +26,15 @@
     {% include "components/footer.html" %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     {% renderblock "js" %}
+    {%- with messages = get_flashed_messages(with_categories=true) -%}
+    {% if messages %}
+	<script>
+	  {% for category, message in messages %}
+		M.toast({ html: "{{message}}" });
+	  {% endfor %}
+	</script>
+    {% endif %}
+    {%- endwith %}
 </body>
 </html>
 

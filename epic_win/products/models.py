@@ -53,8 +53,10 @@ class Purchase(db.Model):
     user_id = db.Column(db.Integer(), db.ForeignKey('users.id'))
     purchase_date = db.Column(db.DateTime(), default=datetime.utcnow)
     payment_confrimation = db.Column(db.String(20))
-
     items = db.relationship("PurchaseItem", backref="purchase")
+    is_checkout = db.Column(db.Boolean(), default=False)
+
+    user = db.relationship("Users", backref="purchases")
 
     def __repr__(self):
         return f"<Purchase ({self.id}) - Total: {self.calc_total()}>"
@@ -73,6 +75,7 @@ class PurchaseItem(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
     count = db.Column(db.Integer, nullable=False, default=1)
 
+    product = db.relationship("Product", backref="purchase_items")
     def __repr__(self):
         return f"<PurchaseItem ({self.product.name}) * {self.count} - Total: {self.calc_total()}>"
 
