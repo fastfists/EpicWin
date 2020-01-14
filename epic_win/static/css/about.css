@@ -12,11 +12,13 @@ display:flex;
 }
 
 .pg1 {
-    align-content: left;
+    align-content: center;
+    padding-left: 140px;
 }
 
 .pg2 {
-    text-align: left;
+    text-align: center;
+    padding-left: 140px;
 }
 
 .head {
