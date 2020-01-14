@@ -31,6 +31,7 @@ def add_to_cart():
     db.session.add(item)
     db.session.commit()
     flash("Added to cart")
+
     return redirect("/shop")
 
 @views.route('/search', methods=["GET", "POST"])
@@ -93,5 +94,10 @@ def products():
     return render_template('products/index.html', **context)
 
 @views.route('/checkout')
+@login_required
 def checkout():
-    return render_template("products/checkout.html")
+
+    return render_template("products/checkout.html", cart=current_user.get_cart())
+
+
+
