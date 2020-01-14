@@ -1,7 +1,7 @@
 
 .a {
 display:flex;
-left: 140px;
+left: 400px;
 right: 140px;
 }
 
@@ -15,16 +15,10 @@ right: 140px;
     align-self: center;
 }
 
-.pg1 {
+.container {
     align-content: center;
-    left: 140px;
-    right: 140px;
-}
-
-.pg2 {
-    text-align: center;
-    left: 140px;
-    right: 140px;
+    padding-left: 140px;
+    padding-right: 140px;
 }
 
 .head {
