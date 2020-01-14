@@ -58,6 +58,10 @@ class Purchase(db.Model):
 
     user = db.relationship("Users", backref="purchases")
 
+    def to_dict(self):
+        items = [ item.to_dict() for item in self.items ]
+        return {'items' : items }
+
     def __repr__(self):
         return f"<Purchase ({self.id}) - Total: {self.calc_total()}>"
 
@@ -76,11 +80,20 @@ class PurchaseItem(db.Model):
     count = db.Column(db.Integer, nullable=False, default=1)
 
     product = db.relationship("Product", backref="purchase_items")
+
+    def to_dict(self):
+        return {"name" : self.product.name,
+                "quantity": self.count,
+                "currency": "USD",
+                "price": float(self.calc_total()),
+                "sku" : "item"}
+
     def __repr__(self):
         return f"<PurchaseItem ({self.product.name}) * {self.count} - Total: {self.calc_total()}>"
 
-    def __repr__(self):
+    def __str__(self):
         return f"({self.product.name}) * {self.count} - Total: {self.calc_total()}"
+
     # color
     # size
 

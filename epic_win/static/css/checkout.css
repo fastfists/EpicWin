@@ -1,8 +1,9 @@
 .shipping {
 	margin-top: 0px;
+    padding: 1em 0;
 }
 
-.shop-main {
+.collection-item,
+.collection-header {
+    list-style-type: none;
 }
-
-

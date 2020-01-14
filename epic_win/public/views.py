@@ -8,7 +8,7 @@ public = Blueprint('public', __name__)
 def index():
     if current_user:
         print(current_user)
-    items = Product.query.all()
+    items = Product.query.limit(5).all()
     return render_template("public/index.html", items=items)
 
 @public.route('/about')

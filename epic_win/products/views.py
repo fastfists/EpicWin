@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, abort
 from epic_win.ext import db
 from flask_security import current_user, login_required
 from .models import Product, PurchaseItem, Purchase
@@ -15,9 +15,63 @@ def single(slug):
     context = {"product": product, "similar_items" : similar_items}
     return render_template('products/single_item.html', **context)
 
+@views.route("/purchase", methods=["GET", "POST"])
+@login_required
+def purchase_cart():
+
+    cart = current_user.get_cart()
+    success, payment = create_invoice(cart)
+    if not success:
+        return abort(404)
+
+    return_url = authorize_payment(payment)
+
+    cart.is_checkout = False
+
+    db.session.add(cart)
+    db.session.commit()
+
+    return jsonify({"status": "SUCCESS", "return_url": return_url })
+
+def authorize_payment(payment):
+    for link in payment.links:
+        if link.rel == "approval_url":
+            approval_url = str(link.href)
+            return approval_url
+
+def create_invoice(purchase:Purchase):
+
+    purchase_dict = purchase.to_dict()
+
+    payment = paypal.Payment({
+        "intent": "sale",
+        "payer": {
+            "payment_method": "paypal"
+            },
+        "redirect_urls": {
+            "return_url": "/shop-finish",
+            "cancel_url": "/payments/error"
+            },
+        "transactions": [
+            {
+                "item_list": { purchase_dict },
+                "amount": {
+                    "total": float(purchase.calc_total()),
+                    "currency": "USD"
+                    },
+                "description": f"Epic Wins Sporting Goods"
+            }]
+        })
+
+    success = payment.create()
+    return success, payment
+
 @views.route("/add-to-cart", methods=["GET", "POST"])
 @login_required
 def add_to_cart():
+
+    schema = AddToCartSchema()
+    body = schema.load(request.args)
 
     product = Product.query.filter(Product.slug == body.get("product")).first_or_404()
     item = PurchaseItem(product=product, count=body.get("quantity"))
@@ -28,9 +82,21 @@ def add_to_cart():
     db.session.add(cart)
     db.session.add(item)
     db.session.commit()
+
     flash("Added to cart")
 
     return redirect("/shop")
+
+@views.route('/remove/<int:purchase_item_id>')
+@login_required
+def remove_item(purchase_item_id):
+
+    PurchaseItem.query.filter_by(id=purchase_item_id).delete()
+    db.session.commit()
+
+    flash("Removed Item")
+
+    return redirect("/checkout")
 
 @views.route('/search', methods=["GET", "POST"])
 def search_form():
