@@ -27,7 +27,7 @@ class AddToCartSchema(ma.Schema):
     product = fields.String()
     quantity = fields.Integer()
 
-class ExecuuteSchema(ma.Schema):
+class ExecuteSchema(ma.Schema):
 
     paymentId = fields.String()
     token = fields.String()

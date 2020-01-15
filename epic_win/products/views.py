@@ -3,7 +3,7 @@ from epic_win.ext import db
 from flask_security import current_user, login_required
 from .models import Product, PurchaseItem, Purchase
 from sqlalchemy import or_
-from .schemas import ProductSchema, SearchSchema, AddToCartSchema, ExecuuteSchema
+from .schemas import ProductSchema, SearchSchema, AddToCartSchema, ExecuteSchema
 import paypalrestsdk as paypal
 
 views = Blueprint('products', __name__)
@@ -20,9 +20,14 @@ def single(slug):
 @login_required
 def execute_payment():
 
-    schema = ExecuuteSchema()
+    schema = ExecuteSchema()
     schema.load(request.args)
-    pass
+
+
+    payment = paypal.Payment.find(body.get("paymentId"))
+    payment.execute({"payer_id": body.get("PayerID")})
+
+    return redirect("/")
 
 @views.route("/purchase", methods=["GET", "POST"])
 @login_required
