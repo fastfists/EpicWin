@@ -65,7 +65,7 @@ a {
     color: black;
 }
 
-a:hover:not(.btn, .btn-lg) {
+.purple-hover:hover {
     color: #A1167A;
 }
 
