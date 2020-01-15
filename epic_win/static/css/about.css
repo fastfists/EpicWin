@@ -1,22 +1,10 @@
-
-.a {
-display:flex;
-padding-left: 200px;
-padding-right: 140px;
-justify-content: space-between;
-}
-
-.b {
-    display:flex;
-    padding-left: 140px;
+.image-row {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding-right: 140px;
 }
-
 .top {
     font-size: 60px;
-    color: white;
-    background: #000000;
     text-align: center;
 }
 .container {
