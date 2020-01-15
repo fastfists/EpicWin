@@ -2,9 +2,11 @@
 
 {% from "components/fields.html" import render_field_with_errors, render_field %}
 
-{% addtoblock "css" %}
-<link rel="stylesheet" href="/static/css/login.css">
-{% endaddtoblock %}
+
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="/static/css/register.css">
+{% endblock css %}
 
 {% block body %}
 <section class="bg">

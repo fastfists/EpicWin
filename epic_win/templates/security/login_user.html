@@ -1,8 +1,8 @@
 {% extends 'layout_fast.html' %}
 
-{% addtoblock "css" %}
-<link rel="stylesheet" href="/static/css/login.css">
-{% endaddtoblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/login.css">
+{% endblock css %}
 
 {% from "components/fields.html" import render_field, render_field_with_errors, render_checkbox_field %}
 
