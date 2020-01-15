@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, abort
-from epic_win.ext import db
+from epic_win.ext import db, mail
 from flask_security import current_user, login_required
 from .models import Product, PurchaseItem, Purchase
 from sqlalchemy import or_
@@ -23,9 +23,15 @@ def execute_payment():
     schema = ExecuteSchema()
     schema.load(request.args)
 
+    paymentId = body.get("paymentId")
 
-    payment = paypal.Payment.find(body.get("paymentId"))
+    payment = paypal.Payment.find(paymentId)
     payment.execute({"payer_id": body.get("PayerID")})
+
+    user = db.session.query(Purchase.user).filter_by(payment_confirmation=paymentId).first()
+    msg = Message(f"{user.username}, thank you your order has been put in our system, and we will deliver it to you as soon as possible", recipients=[user.email])
+
+    flash("Your Package has been ordered")
 
     return redirect("/")
 
