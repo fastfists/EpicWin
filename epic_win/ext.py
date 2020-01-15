@@ -13,7 +13,10 @@ login_manager = LoginManager()
 migrate = Migrate()
 db = SQLAlchemy()
 ma = Marshmallow()
-admin = Admin(template_mode="bootstrap3", base_template="admin_template.html")
 bcrypt = Bcrypt()
 security = Security()
 mail = Mail()
+
+from epic_win.admin import IndexView
+
+admin = Admin(index_view=IndexView() ,template_mode="bootstrap3", base_template="admin_template.html")
