@@ -1,13 +1,8 @@
 {% extends 'layout_fast.html' %}
 
-{% addtoblock "css" %}
-<link rel="stylesheet" href="/static/css/about.css">
-<style>
-    div.a {
-        text-indent: 50px;
-    }
-</style>
-{% endaddtoblock %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/about.css">
+{% endblock %}
 
 {% block body %}
 <div class="top row">
@@ -15,8 +10,6 @@
     <h3>About Epic Wins</h3>
 </div>
 <hr>
-
-
 
 <div class="container">
     <div class="image-row">

@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    {% addtoblock "css" %}
-        <link rel="stylesheet" href="/static/css/main.css">
-    {% endaddtoblock %}
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/nav.css">
 
     {% block css %}
     {% endblock css %}
@@ -30,6 +29,10 @@
     {% include "components/footer.html" %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     {% renderblock "js" %}
+
+    {% block js %}
+    {% endblock js %}
+
     {%- with messages = get_flashed_messages(with_categories=true) -%}
     {% if messages %}
 	<script>
@@ -39,6 +42,8 @@
 	</script>
     {% endif %}
     {%- endwith %}
+
+    <script src="/static/js/nav.js"></script>
     <script>
         M.AutoInit();
     </script>

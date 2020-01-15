@@ -1,19 +1,14 @@
 {% extends 'layout_fast.html' %}
 {% from '/components/items.html' import render_item_small %}
 
-{% addtoblock "css" %}
-<link rel="stylesheet" href="/static/css/products.css">
-{% endaddtoblock %}
+{% block css%}
+  <link rel="stylesheet" href="/static/css/products.css">
+  <link rel="stylesheet" href="/static/css/items.css">
+{% endblock %}
 
-{% addtoblock "css" %}
-<link rel="stylesheet" href="/static/css/items.css">
-{% endaddtoblock %}
-
-{% addtoblock "js" %}
-<script src="/static/js/products.js"></script>
-<script>
-</script>
-{% endaddtoblock %}
+{% block js %}
+  <script src="/static/js/products.js"></script>
+{% endblock %}
 
 {% block body %}
 
@@ -94,6 +89,3 @@
 {% endblock body %}
 
 
-{% addtoblock "js" %}
-<script type="module" src="/static/js/products.js"></script>
-{% endaddtoblock %}

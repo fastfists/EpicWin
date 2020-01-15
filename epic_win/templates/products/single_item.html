@@ -1,13 +1,13 @@
 {% extends 'layout_fast.html' %}
 
 {% from "components/items.html" import render_item %}
-{% addtoblock "css" %}
+{% block css %}
     <link rel="stylesheet" href="/static/css/single_item.css">
-{% endaddtoblock %}
+{% endblock %}
 
-{% addtoblock "js" %}
+{% block js %}
     <script rel="stylesheet" href="/static/js/single_item.js" />
-{% endaddtoblock %}
+{% endblock %}
 
 {% block body %}
 <section class="item-view">
