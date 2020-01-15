@@ -7,5 +7,7 @@ def init_admin():
     admin.add_view(CustomView(Role, db.session))
 
 class UserAdmin(CustomView):
+
+    column_exclude_list = ('password',)
     column_searchable_list = ('username',)
     column_filters = ('username', 'email')

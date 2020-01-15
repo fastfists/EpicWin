@@ -4,17 +4,24 @@
 
 {{ super() }}
 <div class="row">
-    <h1>Flask-Admin example</h1>
+    <h1>Welcome to the home page.</h1>
     <p class="lead">
-        Customize the layout
+        Cool... now what can I do?
     </p>
-    <p>
-        This example shows how you can customize the look & feel of the admin interface.
-    </p>
-    <p>
-        This is done by overriding some of the built-in templates.
-    </p>
-    <a class="btn btn-primary" href="/"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
+    <p> You can view the Products and add new products by going here</p>
+    <a href="/admin/product" class="btn btn-primary">
+        Access avaliable Merchandise
+    </a>
+    <br>
+    <p>You can see all payments made to your store by heading here</p>
+    <a href="/admin/purchase" class="btn btn-primary">
+        Access all products
+    </a>
+    <br>
+    <p>The final use for this admin page is to customize user roles</p>
+    <a href="/admin/role" class="btn btn-primary">
+        Edit user roles here
+    </a>
 </div>
 
 {% endblock body %}

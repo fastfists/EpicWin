@@ -9,9 +9,8 @@ class ExtendedRegisterForm(RegisterForm):
 class IndexView(AdminIndexView):
 
     def is_accessible(self):
-        return current_user.is_authenticated
+        return is_admin()
 
-# Customized admin interface
 class CustomView(ModelView):
 
     list_template = 'admin/list.html'
@@ -19,10 +18,7 @@ class CustomView(ModelView):
     edit_template = 'admin/edit.html'
 
     def is_accessible(self):
-        return (current_user.is_active and
-                current_user.is_authenticated and
-                current_user.has_role('Admin')
-        )
+        return is_admin()
 
     def _handle_view(self, name, **kwargs):
         """
@@ -35,3 +31,10 @@ class CustomView(ModelView):
             else:
                 # login
                 return redirect(url_for('security.login', next=request.url))
+
+def is_admin():
+
+    return (current_user.is_active and
+            current_user.is_authenticated and
+            current_user.has_role('Admin')
+    )
