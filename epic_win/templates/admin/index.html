@@ -1,4 +1,27 @@
 {% extends 'admin/master.html' %}
 
 {% block body %}
-{% endblock %}
+
+{{ super() }}
+<div class="row">
+    <h1>Welcome to the home page.</h1>
+    <p class="lead">
+        Cool... now what can I do?
+    </p>
+    <p> You can view the Products and add new products by going here</p>
+    <a href="/admin/product" class="btn btn-primary">
+        Access avaliable Merchandise
+    </a>
+    <br>
+    <p>You can see all payments made to your store by heading here</p>
+    <a href="/admin/purchase" class="btn btn-primary">
+        Access all products
+    </a>
+    <br>
+    <p>The final use for this admin page is to customize user roles</p>
+    <a href="/admin/role" class="btn btn-primary">
+        Edit user roles here
+    </a>
+</div>
+
+{% endblock body %}

@@ -9,6 +9,7 @@
 main {
     flex: 1 0 auto;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 body {
@@ -32,24 +33,10 @@ a {
 
 /* Layout */
 
-
-.container {
-    padding-left: 5%;
-    /* margin: 0 auto; */
+.card-action {
+    display: flex;
+    justify-content: space-between;
 }
-
-/* Desktop Size */
-@media (max-width: 1025px) {
-    .container {
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-
-    }
-}
-
 
 /* Colors */
 .text-white {
@@ -78,9 +65,10 @@ a {
     color: black;
 }
 
-a:hover:not(.btn) {
+.purple-hover:hover {
     color: #A1167A;
 }
+
 
 .button,
 .btn-md,
@@ -99,7 +87,7 @@ a:hover:not(.btn) {
 }
 
 .btn-lg {
-    padding: 20px 30px;
+    padding: 20px 30px !important;
 }
 
 .spacer {

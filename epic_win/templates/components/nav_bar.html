@@ -43,7 +43,12 @@
     <li><a href="/">home</a></li>
     <li><a href="/about">about</a></li>
     <li><a href="/shop">shop</a></li>
-    <li><a href="/login">login</a></li>
-    <li><a href="/checkout">checkout</a></li>
+    {% if current_user.is_authenticated %}
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/checkout"><i class="material-icons"> shopping_cart</i></a></li>
+    {% else %}
+        <li><a href="/register">Register</a></li>
+        <li><a href="/login">Login</a></li>
+    {% endif %}
 </ul>
 

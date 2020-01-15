@@ -3,7 +3,8 @@ from epic_win.ext import db
 from flask_security import current_user, login_required
 from .models import Product, PurchaseItem, Purchase
 from sqlalchemy import or_
-from .schemas import ProductSchema, SearchSchema, AddToCartSchema
+from .schemas import ProductSchema, SearchSchema, AddToCartSchema, ExecuuteSchema
+import paypalrestsdk as paypal
 
 views = Blueprint('products', __name__)
 
@@ -15,23 +16,34 @@ def single(slug):
     context = {"product": product, "similar_items" : similar_items}
     return render_template('products/single_item.html', **context)
 
+@views.route("/shop-finish")
+@login_required
+def execute_payment():
+
+    schema = ExecuuteSchema()
+    schema.load(request.args)
+    pass
+
 @views.route("/purchase", methods=["GET", "POST"])
 @login_required
 def purchase_cart():
 
     cart = current_user.get_cart()
     success, payment = create_invoice(cart)
+
     if not success:
+        print(f'{ payment.error }')
         return abort(404)
 
     return_url = authorize_payment(payment)
 
     cart.is_checkout = False
+    cart.payment_confirmation = payment.id
 
     db.session.add(cart)
     db.session.commit()
 
-    return jsonify({"status": "SUCCESS", "return_url": return_url })
+    return redirect(return_url)
 
 def authorize_payment(payment):
     for link in payment.links:
@@ -46,15 +58,15 @@ def create_invoice(purchase:Purchase):
     payment = paypal.Payment({
         "intent": "sale",
         "payer": {
-            "payment_method": "paypal"
+                "payment_method": "paypal"
             },
         "redirect_urls": {
-            "return_url": "/shop-finish",
-            "cancel_url": "/payments/error"
+            "return_url": f"{request.host_url}/shop-finish",
+            "cancel_url": f"{request.host_url}/payments/error"
             },
         "transactions": [
             {
-                "item_list": { purchase_dict },
+                "item_list": purchase_dict,
                 "amount": {
                     "total": float(purchase.calc_total()),
                     "currency": "USD"
@@ -91,7 +103,8 @@ def add_to_cart():
 @login_required
 def remove_item(purchase_item_id):
 
-    PurchaseItem.query.filter_by(id=purchase_item_id).delete()
+    item = PurchaseItem.query.filter(PurchaseItem.id ==  purchase_item_id).first_or_404()
+    db.session.delete(item)
     db.session.commit()
 
     flash("Removed Item")

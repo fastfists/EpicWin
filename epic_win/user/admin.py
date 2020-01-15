@@ -1,7 +1,13 @@
 from .models import Users, Role
 from epic_win.ext import admin, db
-from flask_admin.contrib.sqla import ModelView
+from epic_win.admin import CustomView
 
 def init_admin():
-    admin.add_view(ModelView(Users, db.session))
-    admin.add_view(ModelView(Role, db.session))
+    admin.add_view(UserAdmin(Users, db.session))
+    admin.add_view(CustomView(Role, db.session))
+
+class UserAdmin(CustomView):
+
+    column_exclude_list = ('password',)
+    column_searchable_list = ('username',)
+    column_filters = ('username', 'email')

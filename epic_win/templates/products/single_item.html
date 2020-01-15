@@ -43,11 +43,9 @@
     <div class="description">
         <h4>Similar Items</h4>
         <div class="row">
-          {% for item in similar_items.items %}
-            <div class="col s4">
+            {% for item in similar_items.items %}
                 {{ render_item(item) }}
-            </div>
-          {% endfor %}
+            {% endfor %}
         </div>
     </div>
 </section>

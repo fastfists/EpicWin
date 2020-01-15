@@ -2,26 +2,11 @@
 
 .hero {
     padding-top: 4vh;
-    display: flex;
-    justify-content: space-between;
     height: 70vh;
     background: rgba(0,0,0,0);
     position: relative;
     z-index: 1;
 }
-
-/* could be good looking ;) */
-/* .hero:before { */
-/*     content: ""; */
-/*     position: absolute; */
-/*     top: 0; */
-/*     left: 0; */
-/*     right: 0; */
-/*     bottom: 0; */
-/*     background: transparent; */
-/*     box-shadow: 0px 25px 10px rgba(0, 0, 0, 0.25); */
-/*     transform: rotate(-7.5deg); */
-/* } */
 
 .hero-bg{
     background: #D9DFE5;
@@ -44,12 +29,12 @@
     background: linear-gradient(178.94deg, #28476B 1.37%, rgba(40, 71, 107, 0.379528) 55.83%, rgba(40, 71, 107, 0.292661) 71.42%, rgba(40, 71, 107, 0.203125) 80.93%, rgba(40, 71, 107, 0) 100.11%);
     mix-blend-mode: normal;
     position: relative;
-    top: -20vh;
+    top: -30vh;
     z-index: 0;
-    padding-top: 20vh;
+    padding-top: 40vh;
 }
 
-.heading {
+.headings {
     display: flex;
     align-items: center;
     padding-top: 90px;
@@ -98,32 +83,4 @@
 
 .form-row label{
     margin-right: 0.5em;
-}
-
-/* Desktop Size */
-@media (max-width: 1025px) {
-    .illustration {
-        display: none;
-        width: 70%;
-    }
-    .hero {
-        justify-content: space-around;
-    }
-    .aside {
-        margin-right: 0px;
-    }
-}
-
-/* Tablet Size */
-@media (max-width: 768px) {
-    .illustration {
-    }
-    .aside {
-        width: 75%;
-    }
-}
-
-/* Phone Size */
-@media (max-width: 576px) {
-
 }

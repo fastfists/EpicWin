@@ -1,6 +1,6 @@
 {% extends 'layout_fast.html' %}
 
-{% addtoblock "js" %}
+{% addtoblock "css" %}
 	<link rel="stylesheet" href="/static/css/checkout.css">
 {% endaddtoblock %}
 
@@ -8,10 +8,15 @@
 {% set product = item.product %}
 <li class="collection-item avatar horizantal">
   <img src="{{ '/static/images/Product Images/' + product.image_name }}" alt="" class="circle">
-  <span class="title">{{ product.name }} </span>
-  <p>{{ product.description_short }}</p>
-  <p>{{ product.cost }}</p>
-  <a href="/remove/{{ product.id }}" class="secondary-content"><i class="material-icons">remove_circle</i></a>
+  <div style="display: flex;">
+    <div>
+        <span class="title">{{ product.name }} </span>
+        <p>{{ product.description_short }}</p>
+        <p> ${{ product.cost }}</p>
+    </div>
+    <p class="subheading-2" style="margin-left: 2em; align-self: center">X {{ count }}</p>
+  </div>
+  <a href="/remove/{{ item.id }}" class="secondary-content"><i class="material-icons">remove_circle</i></a>
 </li>
 {% endmacro %}
 
@@ -22,6 +27,7 @@
 	<p>On all orders until 2021</p>
 </div>
 
+{% if cart %}
 <div class="row">
     <div class="collection item-section col s6 offset-s1">
         <li class="collection-header"><h4>Items</h4></li>
@@ -35,14 +41,27 @@
             <h3>Order Summary</h3>
             <hr>
             {% set total = cart.calc_total() %}
-            <p class="subheading-2">Subtotal: $ {{ total }} </p>
-            <p class="subheading-2">Discounts: $ 00.00 </p>
-            <p class="subheading-2">Taxes: $ {{ total|float * 0.0825 }} </p>
-            <p class="subheading-2">Total: $ {{ total|float * 1.0825 }} </p>
+            <p class="subheading-3">Subtotal: <span class="subheading-3 grey-text text-darken-2">${{"%.2f" | format ( total ) }} </span></p>
+            <p class="subheading-3">Discounts: <span class="subheading-3 grey-text text-darken-2">$00.00 </span></p>
+            <p class="subheading-3">Taxes: <span class="subheading-3 grey-text text-darken-2">${{ "%.2f" | format( total|float * 0.0825 ) }} </span></p>
+            <p class="subheading-3">Total: <span class="subheading-3 grey-text text-darken-2">${{ "%.2f" | format( total|float * 1.0825 ) }} </span></p>
         </div>
         <a href="/purchase" class="btn">
             Checkout <i class="material-icons">arrow_forward</i>
         </a>
     </div>
 </div>
+
+{% else %}
+
+<div class="card-panel">
+    <div class="center">
+        <h2> Wow such empty </h2>
+        <p>Try adding stuff from our store</p>
+        <a href="/shop" class="btn-flat waves-effect">Shop Here</a>
+    </div>
+</div>
+
+{% endif %}
+
 {% endblock body %}

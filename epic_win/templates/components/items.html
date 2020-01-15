@@ -1,45 +1,60 @@
 {% addtoblock "css" %}
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 <link rel="stylesheet" href="/static/css/items.css">
 {% endaddtoblock %}
 
 
 {% macro render_item_small(item) %}
-    <div class="col s4 hoverable item-sm">
-	    <a href="/product/{{item.slug}}">
-		<img class="" src="/static/images/Product Images/{{item.image_name}}" alt="" srcset="">
-        </a>
-        <a href="/product/{{item.slug}}" class="subheading-2"> {{item.name}} </a>
-        <h4 class="text-blue"> ${{ item.cost }} </h4>
-    </div>
+<div class="col s12 m6 l4 hoverable item-sm">
+    <img class="" src="/static/images/Product Images/{{item.image_name}}" alt="" srcset="">
+    <a href="/product/{{item.slug}}" class="purple-hover subheading-2"> {{item.name}} </a>
+    <h4 class="text-blue"> ${{ item.cost }} </h4>
+</div>
 {% endmacro %}
 
 {% macro render_item(item) %}
-    <div class="item">
-        <div class="product-info">
-            <p id="name">
-                {{ item.name }}
-            </p>
-            <p id="price">
-		{{ "$%.2f"|format(item.cost) }}
-            </p>
+<div class="col s4">
+    <div class="card">
+        <div class="card-image waves-effect waves-light">
+            <img class="" src="{{ '/static/images/Product Images/' + item.image_name }}" alt="" srcset="">
         </div>
-        <img class="item-image" src="{{ '/static/images/Product Images/' + item.image_name }}" alt="" srcset="">
-        <div class="spacer"></div>
-        <div class="buttons">
-            <a href="/product/{{item.slug}}" class="btn-md dark-blue">View More</a>
-            <a class="btn-md dark-blue">Add to cart</a>
+        <div class="card-content">
+            <span class="card-title text-black">{{ item.name }}</span>
+            <p class="grey-text">{{ item.description_short }}</p>
+        </div>
+        <div class="card-action">
+            <a href="/product/{{item.slug}}" class="">View More</a>
+            <a class="">Add to cart</a>
         </div>
     </div>
+</div>
+
+{#
+<div class="card-panel col s4 hoverable">
+    <div class="product-info">
+        <p id="name">
+            {{ item.name }}
+        </p>
+        <p id="price">
+            {{ "$%.2f"|format(item.cost) }}
+        </p>
+    </div>
+    <img class="item-image" src="{{ '/static/images/Product Images/' + item.image_name }}" alt="" srcset="">
+    <div class="spacer"></div>
+    <div class="buttons">
+        <a href="/product/{{item.slug}}" class="btn-md dark-blue">View More</a>
+        <a class="btn-md dark-blue">Add to cart</a>
+    </div>
+</div> #}
 {% endmacro %}
 
 {% macro render_items(items) %}
-    <div class="items">
-        {% for item in items %}
-        {{ render_item(item) }}
-        {% endfor %}
-    </div>
+<div class="items row">
+    {% for item in items %}
+    {{ render_item(item) }}
+    {% endfor %}
+</div>
 {% endmacro %}
 
 {% addtoblock "js" %}
@@ -54,18 +69,25 @@
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1/slick/slick.min.js"></script>
 {% endaddtoblock %}
 
+
 {% addtoblock "js" %}
 <script>
     $('.items').slick({
         centerMode: true,
-        arrows: true,
         slidesToShow: 3,
-        dots: false,
+        dots: true,
         infinite: true,
-        variableWidth: true,
+        variableWidth: false,
         autoplay: true,
         autoplaySpeed: 2000,
+        responsive: [
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+        ],
     });
 </script>
 {% endaddtoblock %}
-

@@ -52,7 +52,7 @@ class Purchase(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer(), db.ForeignKey('users.id'))
     purchase_date = db.Column(db.DateTime(), default=datetime.utcnow)
-    payment_confrimation = db.Column(db.String(20))
+    payment_confirmation = db.Column(db.String(40))
     items = db.relationship("PurchaseItem", backref="purchase")
     is_checkout = db.Column(db.Boolean(), default=False)
 
@@ -85,7 +85,7 @@ class PurchaseItem(db.Model):
         return {"name" : self.product.name,
                 "quantity": self.count,
                 "currency": "USD",
-                "price": float(self.calc_total()),
+                "price": float(self.product.cost),
                 "sku" : "item"}
 
     def __repr__(self):
@@ -96,9 +96,7 @@ class PurchaseItem(db.Model):
 
     # color
     # size
-
-
-
+    
     def calc_total(self):
         return self.product.get_cost() * self.count
 
