@@ -30,7 +30,7 @@ def execute_payment():
     payment = paypal.Payment.find(paymentId)
     payment.execute({"payer_id": body.get("PayerID")})
 
-    user = db.session.query(Purchase.user).filter_by(payment_confirmation=paymentId).first()
+    user = Purchase.query.filter_by(payment_confirmation=paymentId).first().user
     msg = Message(f"{user.username}, thank you your order has been put in our system, and we will deliver it to you as soon as possible", recipients=[user.email])
 
     flash("Your Package has been ordered")
