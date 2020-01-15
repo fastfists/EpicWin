@@ -21,7 +21,7 @@ def single(slug):
 def execute_payment():
 
     schema = ExecuteSchema()
-    schema.load(request.args)
+    body = schema.load(request.args)
 
     paymentId = body.get("paymentId")
 
