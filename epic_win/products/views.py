@@ -4,7 +4,7 @@ from .schemas import ProductSchema, SearchSchema, AddToCartSchema, ExecuteSchema
 
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, abort
 from flask_security import current_user, login_required
-from flask_mail import Message
+from flask_mail import Message, mail
 from sqlalchemy import or_
 import paypalrestsdk as paypal
 
@@ -32,6 +32,7 @@ def execute_payment():
 
     user = Purchase.query.filter_by(payment_confirmation=paymentId).first().user
     msg = Message(f"{user.username}, thank you your order has been put in our system, and we will deliver it to you as soon as possible", recipients=[user.email])
+    mail.send_msg(msg)
 
     flash("Your Package has been ordered")
 
