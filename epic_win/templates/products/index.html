@@ -32,7 +32,7 @@
 {% endif %}
 
 <section class="shop-main row">
-  <div class="filters col s2">
+  <div class="filters col s12 m12 l2">
     <p class="subheading-2">Filter by:</p>
     <ul class="collapsible">
       <li>
@@ -69,7 +69,7 @@
       </li>
     </ul>
   </div>
-  <div class="col s10">
+  <div class="col s12 m12 l10">
     <div id="shop-list">
       {% for item in pagination.items %}
         {{ render_item_small(item) }}

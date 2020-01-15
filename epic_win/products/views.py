@@ -38,6 +38,7 @@ def purchase_cart():
     return_url = authorize_payment(payment)
 
     cart.is_checkout = False
+    cart.payment_confirmation = payment.id
 
     db.session.add(cart)
     db.session.commit()
@@ -57,7 +58,7 @@ def create_invoice(purchase:Purchase):
     payment = paypal.Payment({
         "intent": "sale",
         "payer": {
-            "payment_method": "paypal"
+                "payment_method": "paypal"
             },
         "redirect_urls": {
             "return_url": f"{request.host_url}/shop-finish",

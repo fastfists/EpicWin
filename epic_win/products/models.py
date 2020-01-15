@@ -52,7 +52,7 @@ class Purchase(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer(), db.ForeignKey('users.id'))
     purchase_date = db.Column(db.DateTime(), default=datetime.utcnow)
-    payment_confrimation = db.Column(db.String(20))
+    payment_confirmation = db.Column(db.String(40))
     items = db.relationship("PurchaseItem", backref="purchase")
     is_checkout = db.Column(db.Boolean(), default=False)
 

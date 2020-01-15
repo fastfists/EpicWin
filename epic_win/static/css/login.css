@@ -1,6 +1,8 @@
-
+.bg {
+    background: #395D97;
+}
 .login-form {
-    background: #224680;
+    background: #D9DFE5;
     width: 500px;
     height: 750px;
     margin: 0 auto;
