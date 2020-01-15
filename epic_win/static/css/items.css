@@ -1,6 +1,4 @@
 .item {
-    width: 376px;
-    height: 350px;
     padding: 25px 25px;
     box-shadow: 6px 5px 4px rgba(0, 0, 0, 0.27);
     border-radius: 70px;
@@ -8,13 +6,12 @@
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .product-info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 40px;
 }
 
 .item-image {
@@ -22,20 +19,6 @@
     max-height: 200px;
 }
 
-.items {
-    display: flex;
-    justify-content: center;
-    overflow-x: hidden;
-    flex-wrap: wrap;
-    background: rgba(255, 255, 255, 0)
-}
-
-.items .item {
-    margin-left: 45px;
-}
-
-.items .item .buttons {
-}
 
 .item-sm {
     align-items: center;
