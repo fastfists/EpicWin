@@ -4,7 +4,7 @@ from .schemas import ProductSchema, SearchSchema, AddToCartSchema, ExecuteSchema
 
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, abort
 from flask_security import current_user, login_required
-from flask_mail import Message, mail
+from flask_mail import Message
 from sqlalchemy import or_
 import paypalrestsdk as paypal
 
