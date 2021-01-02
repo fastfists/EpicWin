@@ -16,7 +16,7 @@ def login():
 
     if request.method == "POST":
         schema = UserSchema()
-        schmea.load(request.form)
+        schema.load(request.form)
         user = user.query.get(schema.get('username'))
         if user and bcrypt.check_password_hash(user.password, schema.password):
             next_page = request.args.get('next')

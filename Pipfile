@@ -26,4 +26,4 @@ flask-security = {git = "https://github.com/mattupstate/flask-security"}
 paypalrestsdk = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
